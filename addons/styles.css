@@ -1,0 +1,7 @@
+.modal-header {
+    background-image: linear-gradient(to right, #176480, #157390, #1083a0, #0993b0, #00a4bf);
+}
+
+.modal-title {
+    color: #FFF !important;
+}
