@@ -1,0 +1,55 @@
+body {
+    background-image: linear-gradient(to right, #176480, #157390, #1083a0, #0993b0, #00a4bf);
+}
+
+.icon-app {
+    border: 1px solid #FFF;
+    height: 220px;
+    padding: 0.3rem;
+    transition: transform .2s;
+}
+
+.icon-app img {
+    max-height: 150px;
+}
+
+.icon-app:hover {
+    transform: scale(1.1);
+}
+
+.icon-app img:hover::before {
+    -webkit-animation: shine .75s;
+    animation: shine .75s;
+}
+
+@-webkit-keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+h4.title {
+    color: #FFF;
+    text-shadow: 2px 2px #000;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
+.menu-app {
+    display: block;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px #000;
+}
+
+.modal-header {
+    background-image: linear-gradient(to right, #176480, #157390, #1083a0, #0993b0, #00a4bf);
+    color: #FFF;
+}
