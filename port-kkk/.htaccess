@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^login$ index.php
+
+RewriteRule ^home$ media.php?module=home [QSA,L]
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+
+## Menu Perusahaan 
+RewriteRule ^perusahaan$ media.php?module=perusahaan [QSA,L]
+RewriteRule ^tambah-perusahaan$ content/perusahaan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-perusahaan$ content/perusahaan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-perusahaan$ content/perusahaan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-perusahaan$ content/perusahaan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-perusahaan-([0-9a-zA-Z-]+)$ content/perusahaan/aksi.php?act=delete&id=$1 [QSA,L]
+
+Options All -Indexes
+
+</IfModule>
