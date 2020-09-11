@@ -15,7 +15,7 @@
                 <ul class="nav navbar-nav d-none d-sm-flex border-left navbar-height align-items-center">
                     <li class="nav-item dropdown">
                         <a href="#account_menu" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">
-                            <img src="../images/pegawai/upload_<?php echo $pegawai['foto'];?>" class="rounded-circle" width="32" alt="Frontted">
+                            <img src="../images/pegawai/<?php echo $pegawai['foto'] ? $pegawai['foto'] : 'default.jpg' ;?>" class="rounded-circle" width="32" alt="Frontted">
                             <span class="ml-1 d-flex-inline">
                                 <?php echo $pegawai['nama'];?>
                             </span>

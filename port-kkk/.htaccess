@@ -19,6 +19,94 @@ RewriteRule ^edit-perusahaan$ content/perusahaan/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-perusahaan$ content/perusahaan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-perusahaan-([0-9a-zA-Z-]+)$ content/perusahaan/aksi.php?act=delete&id=$1 [QSA,L]
 
+## Menu jabatan 
+RewriteRule ^jabatan$ media.php?module=jabatan [QSA,L]
+RewriteRule ^tambah-jabatan$ content/jabatan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-jabatan$ content/jabatan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-jabatan$ content/jabatan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-jabatan$ content/jabatan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-jabatan-([0-9a-zA-Z-]+)$ content/jabatan/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu kategori-personil 
+RewriteRule ^kategori-personil$ media.php?module=kategori-personil [QSA,L]
+RewriteRule ^tambah-kategori-personil$ content/kategori-personil/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-kategori-personil$ content/kategori-personil/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-kategori-personil$ content/kategori-personil/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-kategori-personil$ content/kategori-personil/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-kategori-personil-([0-9a-zA-Z-]+)$ content/kategori-personil/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu bidang 
+RewriteRule ^bidang$ media.php?module=bidang [QSA,L]
+RewriteRule ^tambah-bidang$ content/bidang/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-bidang$ content/bidang/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-bidang$ content/bidang/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-bidang$ content/bidang/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-bidang-([0-9a-zA-Z-]+)$ content/bidang/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu unit 
+RewriteRule ^unit$ media.php?module=unit [QSA,L]
+RewriteRule ^tambah-unit$ content/unit/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-unit$ content/unit/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-unit$ content/unit/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-unit$ content/unit/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-unit-([0-9a-zA-Z-]+)$ content/unit/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu master-pegawai 
+RewriteRule ^master-pegawai$ media.php?module=master-pegawai [QSA,L]
+RewriteRule ^tambah-master-pegawai$ content/master-pegawai/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-master-pegawai$ content/master-pegawai/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-master-pegawai$ content/master-pegawai/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-master-pegawai$ content/master-pegawai/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-master-pegawai-([0-9a-zA-Z-]+)$ content/master-pegawai/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu klasifikasi 
+RewriteRule ^klasifikasi$ media.php?module=klasifikasi [QSA,L]
+RewriteRule ^tambah-klasifikasi$ content/klasifikasi/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-klasifikasi$ content/klasifikasi/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-klasifikasi$ content/klasifikasi/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-klasifikasi$ content/klasifikasi/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-klasifikasi-([0-9a-zA-Z-]+)$ content/klasifikasi/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu item-kategori 
+RewriteRule ^item-kategori$ media.php?module=item-kategori [QSA,L]
+RewriteRule ^tambah-item-kategori$ content/item-kategori/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-item-kategori$ content/item-kategori/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-item-kategori$ content/item-kategori/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-item-kategori$ content/item-kategori/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-item-kategori-([0-9a-zA-Z-]+)$ content/item-kategori/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu item-varian 
+RewriteRule ^item-varian$ media.php?module=item-varian [QSA,L]
+RewriteRule ^tambah-item-varian$ content/item-varian/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-item-varian$ content/item-varian/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-item-varian$ content/item-varian/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-item-varian$ content/item-varian/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-item-varian-([0-9a-zA-Z-]+)$ content/item-varian/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu item 
+RewriteRule ^item$ media.php?module=item [QSA,L]
+RewriteRule ^tambah-item$ content/item/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-item$ content/item/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-item$ content/item/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-item$ content/item/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-item-([0-9a-zA-Z-]+)$ content/item/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu master-aset 
+RewriteRule ^master-aset$ media.php?module=master-aset [QSA,L]
+RewriteRule ^tambah-master-aset$ content/master-aset/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-master-aset$ content/master-aset/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-master-aset$ content/master-aset/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-master-aset$ content/master-aset/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-master-aset-([0-9a-zA-Z-]+)$ content/master-aset/aksi.php?act=delete&id=$1 [QSA,L]
+
+## Menu lokasi-penempatan 
+RewriteRule ^lokasi-penempatan$ media.php?module=lokasi-penempatan [QSA,L]
+RewriteRule ^tambah-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-lokasi-penempatan-([0-9a-zA-Z-]+)$ content/lokasi-penempatan/aksi.php?act=delete&id=$1 [QSA,L]
+
 Options All -Indexes
 
 </IfModule>

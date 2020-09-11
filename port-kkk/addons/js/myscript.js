@@ -57,7 +57,7 @@ function hapus_data(id,url){
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if(result.value) {
-            document.location.href = url + id;
+            document.location.href = url +'-'+ id;
         }
     });
 

@@ -12,7 +12,7 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-menu-item <?php if($module=='perusahaan'){echo "active open";}?>">
+            <li class="sidebar-menu-item <?php if($module=='perusahaan' or $module=='jabatan' or $module=='bidang' or $module=='kategori-personil' or $module=='unit'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#personil_master">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
                     <span class="sidebar-menu-text">Seting Personil</span>
@@ -29,8 +29,8 @@ $module=$_GET['module'];
                             <span class="sidebar-menu-text">Jabatan</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item <?php if($module=='kategori-presonil'){echo "active";}?>">
-                        <a class="sidebar-menu-button" href="kategori-presonil">
+                    <li class="sidebar-menu-item <?php if($module=='kategori-personil'){echo "active";}?>">
+                        <a class="sidebar-menu-button" href="kategori-personil">
                             <span class="sidebar-menu-text">Kategori Personil</span>
                         </a>
                     </li>
@@ -46,7 +46,7 @@ $module=$_GET['module'];
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-menu-item <?php if($module=='lap1' OR $module=='lap2' OR $module=='lap3' OR $module=='lap4' OR $module=='lap5' OR $module=='lap6' OR $module=='lap7' OR $module=='lap8' OR $module=='lap9'){echo "active open";}?>">
+            <li class="sidebar-menu-item <?php if($module=='klasifikasi' or $module=='item-kategori' or $module=='item-varian' or $module=='item' or $module=='lokasi-penempatan'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#aset_master">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-edit"></i>
                     <span class="sidebar-menu-text">Setting Aset</span>
@@ -73,12 +73,23 @@ $module=$_GET['module'];
                             <span class="sidebar-menu-text">Item</span>
                         </a>
                     </li>
+                    <li class="sidebar-menu-item <?php if($module=='lokasi-penempatan'){echo "active";}?>">
+                        <a class="sidebar-menu-button" href="lokasi-penempatan">
+                            <span class="sidebar-menu-text">Lokasi Penempatan</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
-            <li class="sidebar-menu-item <?php if($module=='master-personil'){echo "active";}?>">
-                <a class="sidebar-menu-button" href="master-personil">
+            <li class="sidebar-menu-item <?php if($module=='master-pegawai'){echo "active";}?>">
+                <a class="sidebar-menu-button" href="master-pegawai">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user"></i>
-                    <span class="sidebar-menu-text">Master Personil</span>
+                    <span class="sidebar-menu-text">Master Pegawai</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item <?php if($module=='master-aset'){echo "active";}?>">
+                <a class="sidebar-menu-button" href="master-aset">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-box"></i>
+                    <span class="sidebar-menu-text">Master Aset</span>
                 </a>
             </li>
             <li class="sidebar-menu-item">

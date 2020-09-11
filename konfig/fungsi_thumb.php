@@ -54,5 +54,7 @@ function UploadPegawai($fupload_name){
 	unlink("../../images/pegawai/$fupload_name");
 	imagedestroy($im_src);
 	imagedestroy($im);
+
+	return $im;
 }
 ?>

@@ -170,6 +170,8 @@ else{
         $('.panel-collapse').on('hide.bs.collapse', function () {
             $(this).siblings('.panel-heading').removeClass('active');
         });
+
+        $("#select2").select2();
     </script>
 </body>
 
