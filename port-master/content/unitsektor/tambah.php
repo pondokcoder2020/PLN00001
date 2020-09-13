@@ -20,7 +20,7 @@
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">No. Telepon</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control form-control-alternative" placeholder="" name="no_telepon">
+						<input type="text" class="form-control form-control-alternative phone" placeholder="" name="no_telepon">
 					</div>
 				</div>
 				<div class="form-group focused row">
@@ -37,3 +37,4 @@
 		</div>
 	</div>
 </form>
+<script src="../addons/masking_form.js"></script>

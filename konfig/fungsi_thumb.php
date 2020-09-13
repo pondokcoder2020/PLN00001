@@ -1,7 +1,7 @@
 <?php
 
 function UploadPegawai($fupload_name){
-	$vdir_upload = "../../images/pegawai/";
+	$vdir_upload = "../../../images/pegawai/";
 	$vfile_upload = $vdir_upload . $fupload_name;
 
 	//Simpan gambar dalam ukuran sebenarnya
@@ -51,7 +51,7 @@ function UploadPegawai($fupload_name){
 
 	//Hapus gambar di memori komputer
 	
-	unlink("../../images/pegawai/$fupload_name");
+	unlink("../../../images/pegawai/$fupload_name");
 	imagedestroy($im_src);
 	imagedestroy($im);
 

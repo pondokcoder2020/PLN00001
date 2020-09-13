@@ -24,7 +24,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$_POST[id
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">No. Telepon</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control form-control-alternative" placeholder="" name="no_telepon" value="<?php echo $d['no_telepon'];?>">
+						<input type="text" class="form-control form-control-alternative phone" placeholder="" name="no_telepon" value="<?php echo $d['no_telepon'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
@@ -41,3 +41,4 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$_POST[id
 		</div>
 	</div>
 </form>
+<script src="../addons/masking_form.js"></script>

@@ -67,6 +67,7 @@
             <div class="form-group">
                 <a href="../index.php" class="btn btn-block btn-warning">Kembali</a>
             </div>
+            <div id="error"></div>
         </form>
     </div>
 

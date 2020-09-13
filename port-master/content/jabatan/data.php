@@ -1,17 +1,14 @@
-<?php
-switch($_GET['act']){
-default:
-?>
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center">
         <div class="flex">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">jabatan</li>
+                    <li class="breadcrumb-item"><a href="home"><i class="material-icons icon-20pt">home</i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Kepegawaian</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Jabatan</li>
                 </ol>
             </nav>
-            <h4 class="m-0">Data jabatan</h4>
+            <h3 class="m-0">Jabatan Pegawai</h3>
         </div>
         <button type="button" class="btn btn-info ml-3 btnTambah"><i class="fa fa-plus"></i> Tambah</button>
     </div>
@@ -25,25 +22,28 @@ default:
                     <thead> 
                         <tr>
                             <th width="50px">No.</th>
-                            <th>Kode</th>
                             <th>Nama</th>
-                            <th>No. Telepon</th>
-                            <th>Alamat</th>
+                            <th>Atasan</th>
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT * FROM master_unit WHERE id_level='2' AND deleted_at IS NULL ORDER BY kode");
+                        $tampil=pg_query($conn,"SELECT uid, nama, uid_parent FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid_unit='$_SESSION[uid_unit]' ORDER BY nama");
                         while($r=pg_fetch_array($tampil)){
+                            $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_pegawai_jabatan WHERE uid='$r[uid_parent]' AND deleted_at IS NULL"));
+                            if($a['nama']!=''){
+                                $atasan=$a['nama'];
+                            }
+                            else{
+                                $atasan="-";
+                            }
                             ?>
                             <tr>
                                 <td><?php echo $no;?></td>
-                                <td><?php echo $r['kode'];?></td>
                                 <td><?php echo $r['nama'];?></td>
-                                <td><?php echo $r['no_telepon'];?></td>
-                                <td><?php echo $r['alamat'];?></td>
+                                <td><?php echo $atasan;?></td>
                                 <td>
                                     <button type="button" rel="tooltip" class="btn btn-sm btn-warning btnEdit" data-toggle="tooltip" data-placement="top" title="Edit" id="<?php echo $r['uid'];?>">
                                         <i class="fa fa-edit"></i>
@@ -66,7 +66,3 @@ default:
 </div>
 	
 <script type="text/javascript" src="addons/js/jabatan.js"></script>
-<?php
-break;
-}
-?>

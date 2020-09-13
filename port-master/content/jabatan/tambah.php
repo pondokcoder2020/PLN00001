@@ -5,12 +5,22 @@
 				<h5 class="modal-title" id="modal-standard-title">Tambah</h5>
 			</div>
 			<div class="modal-body" id="form-data">
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Nama Jabatan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" required>
-					</div>
-				</div>
+                <div class="form-group focused">
+                    <label class="form-control-label">Nama Jabatan</label>
+                    <input type="text"  class="form-control form-control-alternative" placeholder="Jabatan" name="nama" autofocus required>
+                </div>
+				<div class="form-group focused">
+                    <label class="form-control-label">Atasan</label>
+                    <select name="uid_atasan" class="form-control">
+						<option value="">Tidak Ada</option>
+						<?php
+						$tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL ORDER BY nama");
+						while($r=pg_fetch_array($tampil)){
+							echo"<option value='$r[uid]'>$r[nama]</option>";
+						}
+						?>
+					</select>
+                </div>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-success btn-md"><i class="fa fa-save"></i> Simpan</button>
