@@ -15,7 +15,7 @@ $module=$_GET['module'];
             <li class="sidebar-menu-item <?php if($module=='perusahaan' or $module=='jabatan' or $module=='bidang' or $module=='kategori-personil' or $module=='unit'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#personil_master">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
-                    <span class="sidebar-menu-text">Seting Personil</span>
+                    <span class="sidebar-menu-text">Data FPS</span>
                     <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
                 <ul class="sidebar-submenu collapse" id="personil_master">

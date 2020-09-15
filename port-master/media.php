@@ -68,6 +68,8 @@ else{
 
     <link type="text/css" href="addons/css/custom.css?v2" rel="stylesheet">
 
+    <link type="text/css" href="addons/css/org.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="../images/logo.png">
 
     
@@ -162,6 +164,9 @@ else{
 
     <script src="addons/js/datatable.js"></script>
 
+    <script src="addons/js/fungsi_display_image.js"></script>
+
+    <script src="../addons/masking_form.js"></script>
     <script type="text/javascript">
         $('.panel-collapse').on('show.bs.collapse', function () {
             $(this).siblings('.panel-heading').addClass('active');

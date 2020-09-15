@@ -11,13 +11,15 @@ RewriteRule ^home$ media.php?module=home [QSA,L]
 RewriteRule ^cek-login$ cek_login.php
 RewriteRule ^keluar$ logout.php
 
-## Awal Menu Terminologi 
+RewriteRule ^profile$ media.php?module=profile [QSA,L]
+RewriteRule ^aksi-edit-profile$ content/profile/aksi.php?act=update [QSA,L]
+
+
+
+
+## Awal Menu Terminologi
 RewriteRule ^unit$ media.php?module=unit [QSA,L]
-RewriteRule ^tambah-jenkel$ content/jenkel/aksi.php?act=tambah [QSA,L]
-RewriteRule ^aksi-tambah-jenkel$ content/jenkel/aksi.php?act=input [QSA,L]
-RewriteRule ^edit-jenkel$ content/jenkel/aksi.php?act=edit [QSA,L]
-RewriteRule ^aksi-edit-jenkel$ content/jenkel/aksi.php?act=update [QSA,L]
-RewriteRule ^aksi-hapus-jenkel-([0-9a-zA-Z-]+)$ content/jenkel/aksi.php?act=delete&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-unit$ content/unit/aksi.php?act=update [QSA,L]
 
 RewriteRule ^unitsektor$ media.php?module=unitsektor [QSA,L]
 RewriteRule ^tambah-unitsektor$ content/unitsektor/aksi.php?act=tambah [QSA,L]
@@ -25,6 +27,10 @@ RewriteRule ^aksi-tambah-unitsektor$ content/unitsektor/aksi.php?act=input [QSA,
 RewriteRule ^edit-unitsektor$ content/unitsektor/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-unitsektor$ content/unitsektor/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-unitsektor-([0-9a-zA-Z-]+)$ content/unitsektor/aksi.php?act=delete&id=$1 [QSA,L]
+RewriteRule ^view-unitsektor-([0-9a-zA-Z-]+)$ media.php?module=unitsektor&act=view&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-pegawai-unitsektor$ content/unitsektor/aksi.php?act=inputpegawai [QSA,L]
+RewriteRule ^edit-pegawai-sektorunit-([0-9a-zA-Z-]+)$ content/unitsektor/aksi.php?act=updatepegawai&uid=$1 [QSA,L]
+
 
 RewriteRule ^unitlayanan$ media.php?module=unitlayanan [QSA,L]
 RewriteRule ^tambah-unitlayanan$ content/unitlayanan/aksi.php?act=tambah [QSA,L]
@@ -32,6 +38,7 @@ RewriteRule ^aksi-tambah-unitlayanan$ content/unitlayanan/aksi.php?act=input [QS
 RewriteRule ^edit-unitlayanan$ content/unitlayanan/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-unitlayanan$ content/unitlayanan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-unitlayanan-([0-9a-zA-Z-]+)$ content/unitlayanan/aksi.php?act=delete&id=$1 [QSA,L]
+RewriteRule ^view-unitlayanan-([0-9a-zA-Z-]+)$ media.php?module=unitlayanan&act=view&id=$1 [QSA,L]
 
 
 RewriteRule ^jabatan$ media.php?module=jabatan [QSA,L]
@@ -41,12 +48,24 @@ RewriteRule ^edit-jabatan$ content/jabatan/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-jabatan$ content/jabatan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-jabatan-([0-9a-zA-Z-]+)$ content/jabatan/aksi.php?act=delete&id=$1 [QSA,L]
 
-RewriteRule ^pegawai-sektor$ media.php?module=pegawai-sektor [QSA,L]
-RewriteRule ^tambah-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=tambah [QSA,L]
-RewriteRule ^aksi-tambah-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=input [QSA,L]
-RewriteRule ^edit-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=edit [QSA,L]
-RewriteRule ^aksi-edit-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=update [QSA,L]
-RewriteRule ^aksi-hapus-pegawai-sektor-([0-9a-zA-Z-]+)$ content/pegawai-sektor/aksi.php?act=delete&id=$1 [QSA,L]
+
+RewriteRule ^bidang$ media.php?module=bidang [QSA,L]
+RewriteRule ^tambah-bidang$ content/bidang/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-bidang$ content/bidang/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-bidang$ content/bidang/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-bidang$ content/bidang/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-bidang-([0-9a-zA-Z-]+)$ content/bidang/aksi.php?act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^struktur$ media.php?module=struktur [QSA,L]
+
+RewriteRule ^pegawai$ media.php?module=pegawai [QSA,L]
+RewriteRule ^tambah-pegawai$ content/pegawai/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-pegawai$ content/pegawai/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-pegawai$ content/pegawai/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-pegawai$ content/pegawai/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-pegawai-([0-9a-zA-Z-]+)$ content/pegawai/aksi.php?act=delete&id=$1 [QSA,L]
+
 
 Options All -Indexes
 

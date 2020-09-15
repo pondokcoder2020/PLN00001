@@ -18,15 +18,27 @@ else if($module=='unitsektor'){
     include "content/unitsektor/data.php";
 }
 
-else if($module=='unitlayanan'){
-    include "content/unitlayanan/data.php";
-}
-
 else if($module=='jabatan'){
     include "content/jabatan/data.php";
 }
 
-else if($module=='pegawai-sektor'){
-    include "content/pegawai-sektor/data.php";
+else if($module=='bidang'){
+    include "content/bidang/data.php";
+}
+
+else if($module=='struktur'){
+    include "content/struktur/data.php";
+}
+
+else if($module=='profile'){
+    include "content/profile/data.php";
+}
+
+else if($module=='pegawai'){
+    include "content/pegawai/data.php";
+}
+
+else if($module=='unitlayanan'){
+    include "content/unitlayanan/data.php";
 }
 ?>
