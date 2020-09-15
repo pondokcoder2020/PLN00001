@@ -107,6 +107,40 @@ RewriteRule ^edit-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=edit
 RewriteRule ^aksi-edit-lokasi-penempatan$ content/lokasi-penempatan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-lokasi-penempatan-([0-9a-zA-Z-]+)$ content/lokasi-penempatan/aksi.php?act=delete&id=$1 [QSA,L]
 
+## Menu master-inspeksi-peralatan 
+RewriteRule ^master-inspeksi-peralatan$ media.php?module=master-inspeksi-peralatan [QSA,L]
+RewriteRule ^tambah-master-inspeksi-peralatan$ content/master-inspeksi-peralatan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-master-inspeksi-peralatan$ content/master-inspeksi-peralatan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-master-inspeksi-peralatan$ content/master-inspeksi-peralatan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-master-inspeksi-peralatan$ content/master-inspeksi-peralatan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-master-inspeksi-peralatan-([0-9a-zA-Z-]+)$ content/master-inspeksi-peralatan/aksi.php?act=delete&id=$1 [QSA,L]
+
+
+## Detail Inspeksi
+RewriteRule ^detail-inspeksi-([0-9a-zA-Z-]+)$ media.php?module=detail-inspeksi&id=$1 [QSA,L]
+RewriteRule ^tambah-detail-inspeksi-([0-9a-zA-Z-]+)$ content/detail-inspeksi/aksi.php?act=tambah&id_kategori=$1 [QSA,L]
+RewriteRule ^aksi-tambah-detail-inspeksi$ content/detail-inspeksi/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-detail-inspeksi$ content/detail-inspeksi/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-detail-inspeksi$ content/detail-inspeksi/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-detail-inspeksi-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/detail-inspeksi/aksi.php?act=delete&id_kategori=$1&id=$2 [QSA,L]
+
+
+## parameter pengecekan 
+RewriteRule ^parameter-([0-9a-zA-Z-]+)$ media.php?module=parameter&id=$1 [QSA,L]
+RewriteRule ^tambah-parameter-([0-9a-zA-Z-]+)$ content/parameter/aksi.php?act=tambah&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-parameter$ content/parameter/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-parameter$ content/parameter/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-parameter$ content/parameter/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-parameter-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/parameter/aksi.php?act=delete&id_subkategori=$1&id=$2 [QSA,L]
+
+## Identitas aset
+RewriteRule ^identitas-([0-9a-zA-Z-]+)$ media.php?module=identitas&id=$1 [QSA,L]
+RewriteRule ^tambah-identitas-([0-9a-zA-Z-]+)$ content/identitas/aksi.php?act=tambah&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-identitas$ content/identitas/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-identitas$ content/identitas/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-identitas$ content/identitas/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-identitas-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/identitas/aksi.php?act=delete&id_subkategori=$1&id=$2 [QSA,L]
+
 Options All -Indexes
 
 </IfModule>

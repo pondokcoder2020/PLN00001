@@ -37,6 +37,13 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Jabatan</span>
                 </a>
             </li>
+
+            <li class="sidebar-menu-item <?php if($module=='pegawai-sektor'){echo "active";}?>">
+                <a class="sidebar-menu-button" href="pegawai-sektor">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">people</i>
+                    <span class="sidebar-menu-text">Master Pegawai Sektor</span>
+                </a>
+            </li>
             
             <li class="sidebar-menu-item <?php if($module=='lap1' OR $module=='lap2' OR $module=='lap3' OR $module=='lap4' OR $module=='lap5' OR $module=='lap6' OR $module=='lap7' OR $module=='lap8' OR $module=='lap9'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#laporan">

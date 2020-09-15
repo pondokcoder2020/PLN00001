@@ -92,6 +92,12 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Master Aset</span>
                 </a>
             </li>
+            <li class="sidebar-menu-item <?php if($module=='master-inspeksi-peralatan' or $module=='detail-inspeksi' or $module=='parameter' or $module=='identitas'){echo "active";}?>">
+                <a class="sidebar-menu-button" href="master-inspeksi-peralatan">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-wrench"></i>
+                    <span class="sidebar-menu-text">Master Inspeksi Peralatan</span>
+                </a>
+            </li>
             <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="keluar">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-sign-out-alt"></i>

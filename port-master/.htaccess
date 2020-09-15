@@ -41,6 +41,13 @@ RewriteRule ^edit-jabatan$ content/jabatan/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-jabatan$ content/jabatan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-jabatan-([0-9a-zA-Z-]+)$ content/jabatan/aksi.php?act=delete&id=$1 [QSA,L]
 
+RewriteRule ^pegawai-sektor$ media.php?module=pegawai-sektor [QSA,L]
+RewriteRule ^tambah-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-pegawai-sektor$ content/pegawai-sektor/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-pegawai-sektor-([0-9a-zA-Z-]+)$ content/pegawai-sektor/aksi.php?act=delete&id=$1 [QSA,L]
+
 Options All -Indexes
 
 </IfModule>

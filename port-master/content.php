@@ -25,4 +25,8 @@ else if($module=='unitlayanan'){
 else if($module=='jabatan'){
     include "content/jabatan/data.php";
 }
+
+else if($module=='pegawai-sektor'){
+    include "content/pegawai-sektor/data.php";
+}
 ?>

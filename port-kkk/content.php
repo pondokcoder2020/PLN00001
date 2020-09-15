@@ -58,4 +58,20 @@ else if($module=='lokasi-penempatan'){
     include "content/lokasi-penempatan/data.php";
 }
 
+else if($module=='master-inspeksi-peralatan'){
+    include "content/master-inspeksi-peralatan/data.php";
+}
+
+else if($module=='detail-inspeksi'){
+    include "content/detail-inspeksi/data.php";
+}
+
+else if($module=='parameter'){
+    include "content/parameter/data.php";
+}
+
+else if($module=='identitas'){
+    include "content/identitas/data.php";
+}
+
 ?>
