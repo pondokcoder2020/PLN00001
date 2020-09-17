@@ -28,6 +28,30 @@ RewriteRule ^edit-unitsektor$ content/unitsektor/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-unitsektor$ content/unitsektor/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-unitsektor-([0-9a-zA-Z-]+)$ content/unitsektor/aksi.php?act=delete&id=$1 [QSA,L]
 RewriteRule ^view-unitsektor-([0-9a-zA-Z-]+)$ media.php?module=unitsektor&act=view&id=$1 [QSA,L]
+RewriteRule ^edit-unitsektor-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ media.php?module=unitsektor&act=view&id_unit=$1&id_pegawai=$2 [QSA,L]
+
+RewriteRule ^tambah-admin-unitsektor-([0-9a-zA-Z-]+)$ content/unitsektor/aksi.php?act=tambahadmin&unit=$1 [QSA,L]
+RewriteRule ^aksi-tambah-admin-unitsektor$ content/unitsektor/aksi.php?act=inputadminsektor [QSA,L]
+RewriteRule ^edit-admin-unitsektor$ content/unitsektor/aksi.php?act=updateadmin [QSA,L]
+RewriteRule ^aksi-edit-admin-unitsektor$ content/unitsektor/aksi.php?act=updateadminsektor [QSA,L]
+RewriteRule ^aksi-hapus-admin-unitsektor-([0-9a-zA-Z-]+)$ content/unitsektor/aksi.php?act=deleteadminsektor&uid=$1 [QSA,L]
+
+## unit layanan
+RewriteRule ^unitlayanan$ media.php?module=unitlayanan [QSA,L]
+RewriteRule ^tambah-unitlayanan$ content/unitlayanan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-unitlayanan$ content/unitlayanan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-unitlayanan$ content/unitlayanan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-unitlayanan$ content/unitlayanan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-unitlayanan-([0-9a-zA-Z-]+)$ content/unitlayanan/aksi.php?act=delete&id=$1 [QSA,L]
+
+RewriteRule ^view-unitlayanan-([0-9a-zA-Z-]+)$ media.php?module=unitlayanan&act=view&id=$1 [QSA,L]
+RewriteRule ^edit-unitlayanan-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ media.php?module=unitlayanan&act=view&id_unit=$1&id_pegawai=$2 [QSA,L]
+
+RewriteRule ^tambah-admin-unitlayanan-([0-9a-zA-Z-]+)$ content/unitlayanan/aksi.php?act=tambahadmin&unit=$1 [QSA,L]
+RewriteRule ^aksi-tambah-admin-unitlayanan$ content/unitlayanan/aksi.php?act=inputadminsektor [QSA,L]
+RewriteRule ^edit-admin-unitlayanan$ content/unitlayanan/aksi.php?act=updateadmin [QSA,L]
+RewriteRule ^aksi-edit-admin-unitlayanan$ content/unitlayanan/aksi.php?act=updateadminsektor [QSA,L]
+RewriteRule ^aksi-hapus-admin-unitlayanan-([0-9a-zA-Z-]+)$ content/unitlayanan/aksi.php?act=deleteadminsektor&uid=$1 [QSA,L]
 
 
 RewriteRule ^jabatan$ media.php?module=jabatan [QSA,L]

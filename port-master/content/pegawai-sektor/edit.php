@@ -1,44 +1,38 @@
-<form action="aksi-tambah-unitsektor" method="POST" enctype="multipart/form-data">
+<?php
+$d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$_POST[id]'"));
+?>
+<form action="aksi-edit-unitsektor" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo $_POST['id'];?>">
 	<div class="modal-dialog modal-lg a-lightSpeed">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="modal-standard-title">Tambah</h5>
+				<h5 class="modal-title" id="modal-standard-title">Edit</h5>
 			</div>
 			<div class="modal-body" id="form-data">
-                <div class="form-group focused row">
+				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Kode Unit</label>
 					<div class="col-md-4">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kode" autofocus required max="10">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kode" autofocus required max="10" value="<?php echo $d['kode'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Nama Unit</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" required>
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" required value="<?php echo $d['nama'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">No. Telepon</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control form-control-alternative phone" placeholder="" name="no_telepon">
+						<input type="text" class="form-control form-control-alternative" placeholder="" name="no_telepon" value="<?php echo $d['no_telepon'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Alamat</label>
 					<div class="col-md-9">
-						<textarea name="alamat" class="form-control"></textarea>
+						<textarea name="alamat" class="form-control"><?php echo $d['alamat'];?></textarea>
 					</div>
                 </div>
-                <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Level Sektor</label>
-					<div class="col-md-4">
-						<select name="id_level" class="form-control" required="">
-							<option value="">Pilih</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-						</select>
-					</div>
-				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-success btn-md"><i class="fa fa-save"></i> Simpan</button>
@@ -47,4 +41,3 @@
 		</div>
 	</div>
 </form>
-<script src="../addons/masking_form.js"></script>

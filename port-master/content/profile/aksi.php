@@ -35,7 +35,7 @@ else{
 
 		//pg_query($conn,"INSERT INTO log_modul(uid_pegawai, waktu, id_modul, aksi, id_data) VALUES ('$_SESSION[login_user]', '$waktu_sekarang', '23', 'U', '$_POST[id]')");
 
-		//header("location: profile");
+		header("location: profile");
     }
     
 	pg_close($conn);

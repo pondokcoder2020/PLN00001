@@ -1,5 +1,5 @@
 <div class="text-right">
-    <button type="button" class="btn btn-info ml-3" onclick="tambah_data('tambah-admin-unitsektor-<?php echo $_GET['id']?>')"><i class="fa fa-plus"></i> Tambah</button>
+    <button type="button" class="btn btn-info ml-3" onclick="tambah_data('tambah-admin-unitlayanan-<?php echo $_GET['id']?>')"><i class="fa fa-plus"></i> Tambah</button>
     <br>
     <br>
 </div>
@@ -20,7 +20,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='2' AND uid_jabatan IS NULL AND a.uid_unit='$_GET[id]' ORDER BY a.nama ASC");
+                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='1' AND uid_jabatan IS NULL AND a.uid_unit='$_GET[id]' ORDER BY a.nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
@@ -29,13 +29,13 @@
                         <td><?php echo $r['nama'];?></td>
                         <td><?php echo $r['id_jenkel'] == "P" ? "Perempuan" : "Laki-laki";?></td>
                         <td><?php echo $r['unit'];?></td>
-                        <td><img src="../images/pegawai/<?php echo "upload_".$r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
+                        <td><img src="../images/pegawai/<?php echo $r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
                         <td>
-                            <button onclick="edit_data('<?php echo $r['uid'];?>','edit-admin-unitsektor')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <button onclick="edit_data('<?php echo $r['uid'];?>','edit-admin-unitlayanan')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </button>
                             
-                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid'];?>','aksi-hapus-admin-unitsektor')">
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid'];?>','aksi-hapus-admin-unitlayanan')">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>

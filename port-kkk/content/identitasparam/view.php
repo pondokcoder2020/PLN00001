@@ -1,11 +1,7 @@
 <?php
-$uid=isset($_GET['id']) ? $_GET['id'] : '';
+$id=isset($_GET['id']) ? $_GET['id'] : '';
 
-if(isset($_GET['id_unit'])){
-    $uid=base64_decode($_GET['id_unit']);
-}
-
-$d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
+$d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id='$id'"));
 ?>
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center">
@@ -13,7 +9,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item"><a href="unitsektor">Unit Sektor</a></li>
+                    <li class="breadcrumb-item"><a href="unitsektor">Data FPS</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $d['nama'];?></li>
                 </ol>
             </nav>
@@ -27,14 +23,12 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
         <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="myTab">
             <li class="nav-item">
                 <a href="#tab-21" class="nav-link active" data-toggle="tab" role="tab" aria-controls="tab-21" aria-selected="true">
-                    <span class="nav-link__count">01</span>
-                    Admin
+                    <span class="nav-link__count">Identitas</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#tab-22" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
-                    <span class="nav-link__count">02</span>
-                    Pegawai
+                    <span class="nav-link__count">Parameter</span>
                 </a>
             </li>
         </ul>
@@ -42,12 +36,12 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
             <div class="card-body tab-content">
                 <div class="tab-pane active show fade" id="tab-21">
                     <?php
-                    include "data_admin.php";
+                    include "data_identitas.php";
                     ?>
                 </div>
                 <div class="tab-pane fade" id="tab-22">
                     <?php
-                    include "data_pegawai.php";
+                    include "data_parameter.php";
                     ?>
                 </div>
             </div>

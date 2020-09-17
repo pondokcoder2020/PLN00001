@@ -2,8 +2,9 @@
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
-error_reporting(0);
+// error_reporting(0);
 session_start();
+
 include "timeout.php";
 date_default_timezone_set("Asia/Jakarta");
 if($_SESSION['login_portal']==1){
@@ -175,6 +176,8 @@ else{
         $('.panel-collapse').on('hide.bs.collapse', function () {
             $(this).siblings('.panel-heading').removeClass('active');
         });
+
+        $("#data_sektor").dataTable();
     </script>
 </body>
 

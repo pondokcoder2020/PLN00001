@@ -37,4 +37,8 @@ else if($module=='profile'){
 else if($module=='pegawai'){
     include "content/pegawai/data.php";
 }
+
+else if($module=='unitlayanan'){
+    include "content/unitlayanan/data.php";
+}
 ?>

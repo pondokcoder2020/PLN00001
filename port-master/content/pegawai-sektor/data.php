@@ -8,10 +8,10 @@ default:
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Unit Sektor</li>
+                    <li class="breadcrumb-item active" aria-current="page">Master Pegawai Sektor</li>
                 </ol>
             </nav>
-            <h4 class="m-0">Data Unit Sektor</h4>
+            <h4 class="m-0"><!-- Data Unit Sektor --></h4>
         </div>
         <button type="button" class="btn btn-info ml-3 btnTambah"><i class="fa fa-plus"></i> Tambah</button>
     </div>
@@ -35,13 +35,13 @@ default:
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT * FROM master_unit WHERE id_level='2' AND uid_parnet='$_SESSION[uid_unit]' AND deleted_at IS NULL ORDER BY kode");
+                        $tampil=pg_query($conn,"SELECT * FROM master_unit WHERE id_level='2' AND deleted_at IS NULL ORDER BY kode");
                         while($r=pg_fetch_array($tampil)){
                             ?>
                             <tr>
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $r['kode'];?></td>
-                                <td><a href="view-unitsektor-<?php echo $r['uid'];?>"><?php echo $r['nama'];?></a></td>
+                                <td><?php echo $r['nama'];?></td>
                                 <td><?php echo $r['no_telepon'];?></td>
                                 <td><?php echo $r['alamat'];?></td>
                                 <td>
@@ -67,10 +67,6 @@ default:
 	
 <script type="text/javascript" src="addons/js/unitsektor.js"></script>
 <?php
-break;
-
-case "view":
-    include "view.php";
 break;
 }
 ?>

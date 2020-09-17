@@ -14,7 +14,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='2' AND uid_jabatan IS NOT NULL ORDER BY a.nama ASC");
+                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='1' AND uid_jabatan IS NOT NULL ORDER BY a.nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
@@ -23,7 +23,7 @@
                         <td><?php echo $r['nama'];?></td>
                         <td><?php echo $r['id_jenkel'] == "P" ? "Perempuan" : "Laki-laki";?></td>
                         <td><?php echo $r['unit'];?></td>
-                        <td><img src="../images/pegawai/<?php echo "upload_".$r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
+                        <td><img src="../images/pegawai/<?php echo $r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
                     </tr>
                     <?php
                     $no++;

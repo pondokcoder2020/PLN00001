@@ -12,17 +12,13 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Dashboard</span>
                 </a>
             </li>
-            <?php
-            if($_SESSION['id_level']=='1'){
-            ?>
             <li class="sidebar-menu-item <?php if($module=='unit'){echo "active";}?>">
                 <a class="sidebar-menu-button" href="unit">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_balance</i>
-                    <span class="sidebar-menu-text">Data Unit Induk</span>
+                    <span class="sidebar-menu-text">Profile Unit</span>
                 </a>
             </li>
             <?php
-            }
             if($_SESSION['id_level']=='1'){
             ?>
             <li class="sidebar-menu-item <?php if($module=='unitsektor'){echo "active";}?>">
@@ -69,12 +65,12 @@ $module=$_GET['module'];
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-menu-item <?php if($module=='struktur'){echo "active";}?>">
+            <!--<li class="sidebar-menu-item <?php if($module=='struktur'){echo "active";}?>">
                 <a class="sidebar-menu-button" href="struktur">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i>
                     <span class="sidebar-menu-text">Struktur Jabatan</span>
                 </a>
-            </li>
+            </li>-->
                
             <li class="sidebar-menu-item <?php if($module=='profile'){echo "active";}?>">
                 <a class="sidebar-menu-button" href="profile">

@@ -20,13 +20,13 @@
                 <div class="board ">
                 <?php
                 $d=pg_fetch_array(pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid_parent IS NULL AND uid_unit='$_SESSION[uid_unit]'"));
-                $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM pegawai WHERE uid_jabatan='$d[uid]'"));
+                $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_pegawai WHERE uid_jabatan='$d[uid]'"));
                 ?>
                     <ul class="columnOne">
                         <li>
                         <span class="lvl-b">
                             <strong><?php echo $d['nama'];?></strong>
-                            <br>&nbsp;
+                            <br>&nbsp;<?php $a['nama'];?>
                             </span>
                         </li>
                     </ul>
@@ -49,12 +49,12 @@
                         <ul class="<?php echo $column;?>">
                             <?php
                             while($r=pg_fetch_array($tampil)){
-                                $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM pegawai WHERE uid_jabatan='$r[uid]'"));
+                                $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_pegawai WHERE uid_jabatan='$r[uid]'"));
                                 ?>
                                 <li>
                                 <span>
                                     <strong><?php echo $r['nama'];?></strong>
-                                    <br>&nbsp;
+                                    <br>&nbsp;<?php $a['nama'];?>
                                     </span>
                                 </li>
                                 <?php
@@ -66,7 +66,7 @@
                         <?php
                         $tampil=pg_query($conn,"SELECT a.uid, a.nama FROM master_pegawai_jabatan a WHERE a.uid_parent='$d[uid]' AND a.deleted_at IS NULL AND EXISTS(SELECT NULL FROM master_pegawai_jabatan b WHERE b.uid_parent=a.uid) ORDER BY nama");
                         while($r=pg_fetch_array($tampil)){
-                            $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM pegawai WHERE uid_jabatan='$r[uid]'"));
+                            $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_pegawai WHERE uid_jabatan='$r[uid]'"));
                             ?>
                             <li class="department ">
                                 <span class="lvl-b">
@@ -77,11 +77,11 @@
                                     <?php
                                     $data=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE uid_parent='$r[uid]' AND deleted_at IS NULL ORDER BY nama");
                                     while($u=pg_fetch_array($data)){
-                                        $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM pegawai WHERE uid_jabatan='$u[uid]'"));
+                                        $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_pegawai WHERE uid_jabatan='$u[uid]'"));
                                         ?>
                                         <li class="section"> <span>
                                             <strong><?php echo $u['nama'];?></strong>
-                                            <br>&nbsp;
+                                            <br>&nbsp;<?php echo $a['nama'];?>
                                             </span>
                                         </li>
                                         <?php

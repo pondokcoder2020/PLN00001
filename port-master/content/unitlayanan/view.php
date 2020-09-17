@@ -13,7 +13,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item"><a href="unitsektor">Unit Sektor</a></li>
+                    <li class="breadcrumb-item"><a href="unitsektor">Unit Layanan</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $d['nama'];?></li>
                 </ol>
             </nav>

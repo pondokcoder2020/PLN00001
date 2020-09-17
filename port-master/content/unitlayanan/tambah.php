@@ -1,4 +1,4 @@
-<form action="aksi-tambah-unitsektor" method="POST" enctype="multipart/form-data">
+<form action="aksi-tambah-unitlayanan" method="POST" enctype="multipart/form-data">
 	<div class="modal-dialog modal-lg a-lightSpeed">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -29,16 +29,6 @@
 						<textarea name="alamat" class="form-control"></textarea>
 					</div>
                 </div>
-                <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Level Sektor</label>
-					<div class="col-md-4">
-						<select name="id_level" class="form-control" required="">
-							<option value="">Pilih</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-						</select>
-					</div>
-				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-success btn-md"><i class="fa fa-save"></i> Simpan</button>

@@ -35,7 +35,7 @@ default:
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT * FROM master_unit WHERE id_level='2' AND uid_parnet='$_SESSION[uid_unit]' AND deleted_at IS NULL ORDER BY kode");
+                        $tampil=pg_query($conn,"SELECT * FROM master_unit WHERE id_level='2' AND deleted_at IS NULL ORDER BY kode");
                         while($r=pg_fetch_array($tampil)){
                             ?>
                             <tr>
