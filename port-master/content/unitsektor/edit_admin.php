@@ -40,7 +40,7 @@ $password=decrypt($d['password']);
 						<div class="form-group focused">
 							<label class="form-control-label">Foto</label>
 							<div>
-								<img id="preview_gambar" src="../images/pegawai/<?php echo $d['foto'];?>" alt="" class="img-thumbnail" width="250px"/>
+								<img id="preview_gambar" src="../images/pegawai/upload_<?php echo $d['foto'];?>" alt="" class="img-thumbnail" width="250px"/>
 								<input type="file" class="form-control" name="fupload" id="fupload" onChange="readURL(this);" accept="image/*">
 								<input type="hidden" name="foto" value="<?php echo $d['foto'];?>">
 							</div>

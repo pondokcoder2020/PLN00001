@@ -9,6 +9,7 @@ else{
 	include "../../../konfig/library.php";
 	include "../../../konfig/fungsi_upload.php";
 	include "../../../konfig/myencrypt.php";
+	include "../../../konfig/fungsi_thumb.php";
 
 	$act=$_GET['act'];
 	if ($act=='tambah'){
@@ -65,7 +66,19 @@ else{
 	}
 
 	elseif($act=='inputadminsektor'){
-		$foto=crop_image('../../../images/pegawai/');
+		$acak			 = rand(1,99);
+		$lokasi_file     = $_FILES['fupload']['tmp_name'];
+		$tipe_file       = $_FILES['fupload']['type'];
+		$nama_file       = $_FILES['fupload']['name'];
+		$nama_file_unik  = $acak.$nama_file;
+		
+		if ($_FILES["fupload"]["error"] > 0 OR empty($lokasi_file)){
+			$nama_file_unik = "";
+		}
+	  
+		else{
+			UploadPegawai($nama_file_unik);
+		}
 
 		$cek=pg_query($conn,"SELECT * FROM master_pegawai WHERE nip='$_POST[nip]'");
 
@@ -73,25 +86,34 @@ else{
 			
 		}
 		else{
-			$sql="INSERT INTO master_pegawai (nip,nama,foto,uid_unit,password,created_at) VALUES ('$_POST[nip]','$_POST[nama]','$foto','$_POST[unit]','$_POST[password]','$waktu_sekarang')RETURNING uid";
-			$d=pg_fetch_array(pg_query($conn,$sql));
+			$password = encrypt($_POST['password']);
+			$sql="INSERT INTO master_pegawai (nip, nama, foto, uid_unit, password, created_at) VALUES ('$_POST[nip]', '$_POST[nama]', '$nama_file_unik', '$_POST[unit]', '$password','$waktu_sekarang') RETURNING uid";
+			pg_query($conn,$sql);
 		}
 		header("location: view-unitlayanan-".$_POST['unit']);
 	}
 
 	elseif($act=='updateadminsektor'){
-		$foto=crop_image('../../../images/pegawai/');
-
-		if($foto==""){
-			$foto=$_POST['foto'];
+		$acak			 = rand(1,99);
+		$lokasi_file     = $_FILES['fupload']['tmp_name'];
+		$tipe_file       = $_FILES['fupload']['type'];
+		$nama_file       = $_FILES['fupload']['name'];
+		$nama_file_unik  = $acak.$nama_file;
+		
+		if ($_FILES["fupload"]["error"] > 0 OR empty($lokasi_file)){
+			$nama_file_unik = "$_POST[foto]";
+		}
+	  
+		else{
+			UploadPegawai($nama_file_unik);
+			unlink("../../../images/pegawai/upload_$_POST[foto]");
 		}
 
-		$sql="UPDATE master_pegawai SET nip='$_POST[nip]',nama='$_POST[nama]',foto='$foto',password='$_POST[password]',updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
-		$d=pg_fetch_array(pg_query($conn,$sql));
+		$password = encrypt($_POST['password']);
+		$sql="UPDATE master_pegawai SET nip='$_POST[nip]', nama='$_POST[nama]', foto='$nama_file_unik', password='$password', updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
+		pg_query($conn,$sql);
 
-		// print_r($sql);die();
-
-		header("location: view-unitlayanan-".$_POST['unit']);
+		//header("location: view-unitlayanan-".$_POST['unit']);
 	}
 
 	elseif($act=='deleteadminsektor'){

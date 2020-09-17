@@ -11,7 +11,6 @@
                     <th width="50px">No.</th>
                     <th>NIP</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
                     <th>Unit</th>
                     <th>Foto</th>
                     <th width="100px">Aksi</th>
@@ -20,16 +19,15 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='1' AND uid_jabatan IS NULL AND a.uid_unit='$_GET[id]' ORDER BY a.nama ASC");
+                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='3' AND uid_jabatan IS NULL AND a.uid_unit='$_GET[id]' ORDER BY a.nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
                         <td><?php echo $no;?></td>
                         <td><?php echo $r['nip'];?></td>
                         <td><?php echo $r['nama'];?></td>
-                        <td><?php echo $r['id_jenkel'] == "P" ? "Perempuan" : "Laki-laki";?></td>
                         <td><?php echo $r['unit'];?></td>
-                        <td><img src="../images/pegawai/<?php echo $r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
+                        <td><img src="../images/pegawai/<?php echo $r['foto'] ? "upload_".$r['foto'] : 'default.jpg';?>" width="100"></td>
                         <td>
                             <button onclick="edit_data('<?php echo $r['uid'];?>','edit-admin-unitlayanan')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>

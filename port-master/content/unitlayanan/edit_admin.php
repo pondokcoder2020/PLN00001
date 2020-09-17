@@ -1,6 +1,6 @@
 <?php
 $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_pegawai WHERE uid='$_POST[id]'"));
-// print_r($d);die();
+$password=decrypt($d['password']);
 ?>
 <form action="aksi-edit-admin-unitlayanan" method="POST" enctype="multipart/form-data">
 	<div class="modal-dialog modal-lg a-lightSpeed">
@@ -21,7 +21,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_pegawai WHERE uid='$_POST
 					<div class="col-md-6">
 						<div class="form-group focused">
 							<label class="form-control-label">Password</label>
-							<input type="password"  class="form-control form-control-alternative" placeholder="Password" name="password" required>
+							<input type="password"  class="form-control form-control-alternative" placeholder="Password" name="password" required value="<?php echo $password;?>">
 						</div>
 					</div>
 				</div>
@@ -40,7 +40,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_pegawai WHERE uid='$_POST
 							<label class="form-control-label">Foto</label>
 							<div>
 								<img id="preview_gambar" src="../images/pegawai/<?php echo $d['foto'];?>" alt="" class="img-thumbnail" width="250px"/>
-								<input type="file" class="form-control" name="image" id="fupload" onChange="readURL(this);" accept="image/*">
+								<input type="file" class="form-control" name="fupload" id="fupload" onChange="readURL(this);" accept="image/*">
 								<input type="hidden" name="foto" value="<?php echo $d['foto'];?>">
 							</div>
 						</div>

@@ -29,7 +29,7 @@
                         <td><?php echo $r['nama'];?></td>
                         <td><?php echo $r['id_jenkel'] == "P" ? "Perempuan" : "Laki-laki";?></td>
                         <td><?php echo $r['unit'];?></td>
-                        <td><img src="../images/pegawai/<?php echo "upload_".$r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
+                        <td><img src="../images/pegawai/<?php echo "upload_".$r['foto'] ? "upload_".$r['foto'] : 'default.jpg';?>" width="100"></td>
                         <td>
                             <button onclick="edit_data('<?php echo $r['uid'];?>','edit-admin-unitsektor')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>
