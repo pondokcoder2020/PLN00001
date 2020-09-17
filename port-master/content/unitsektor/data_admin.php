@@ -1,87 +1,52 @@
-<form action="aksi-tambah-pegawai-unitsektor" method="POST" enctype="multipart/form-data">
+<div class="text-right">
+    <button type="button" class="btn btn-info ml-3" onclick="tambah_data('tambah-admin-unitsektor-<?php echo $_GET['id']?>')"><i class="fa fa-plus"></i> Tambah</button>
+    <br>
+    <br>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table id="data_sektor" class="table table-bordered table-striped table-hover" style="width:100%" >
+            <thead> 
+                <tr>
+                    <th width="50px">No.</th>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Unit</th>
+                    <th>Foto</th>
+                    <th width="100px">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no=1;
+                $tampil=pg_query($conn,"SELECT a.uid,a.uid_unit,a.nip,a.nama,a.id_jenkel,a.foto,b.nama as unit FROM master_pegawai a LEFT JOIN master_unit b ON a.uid_unit=b.uid WHERE a.deleted_at IS NULL AND b.id_level='2' AND uid_jabatan IS NULL AND a.uid_unit='$_GET[id]' ORDER BY a.nama ASC");
+                while($r=pg_fetch_array($tampil)){
+                    ?>
+                    <tr>
+                        <td><?php echo $no;?></td>
+                        <td><?php echo $r['nip'];?></td>
+                        <td><?php echo $r['nama'];?></td>
+                        <td><?php echo $r['id_jenkel'] == "P" ? "Perempuan" : "Laki-laki";?></td>
+                        <td><?php echo $r['unit'];?></td>
+                        <td><img src="../images/pegawai/<?php echo $r['foto'] ? $r['foto'] : 'default.jpg';?>" width="100"></td>
+                        <td>
+                            <button onclick="edit_data('<?php echo $r['uid'];?>','edit-admin-unitsektor')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid'];?>','aksi-hapus-admin-unitsektor')">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 	
-	<input type="hidden" class="form-control form-control-alternative" placeholder="" name="unit" value="<?php echo $_GET['id'];?>">
-
-		<div class="modal-header">
-			<h5 class="modal-title" id="modal-standard-title">Tambah</h5>
-		</div>
-		<div class="modal-body" id="form-data">
-            <div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">NIP</label>
-				<div class="col-md-9">
-					<input type="text"  class="form-control form-control-alternative" placeholder="" name="nip" autofocus required="">
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Nama</label>
-				<div class="col-md-9">
-					<input type="text" class="form-control form-control-alternative" placeholder="" name="nama" required="">
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Jenis Kelamin</label>
-				<div class="col-md-9">
-					<select class="form-control form-control-alternative" id="select2" name="id_jenkel" required="">
-						<option value="">Pilih</option>
-						<option value="L">Laki-laki</option>
-						<option value="P">Perempuan</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Foto</label>
-				<div class="col-md-9">
-					<input type="file" accept="image/*" class="form-control form-control-alternative" placeholder="" name="image">
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Kategori</label>
-				<div class="col-md-9">
-					<select class="form-control form-control-alternative select2" name="kategori" required="">
-						<option value="">Pilih</option>
-						<?php
-                    $no=1;
-                    $tampil=pg_query($conn,"SELECT * FROM master_kategori_personil WHERE deleted_at IS NULL ORDER BY nama ASC");
-                    while($r=pg_fetch_array($tampil)){
-                    	echo '<option value="'.$r['uid'].'">'.$r['nama'].'</option>';
-                    }
-                        ?>
-					</select>
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Bidang</label>
-				<div class="col-md-9">
-					<select class="form-control form-control-alternative select2" name="bidang" required="">
-						<option value="">Pilih</option>
-						<?php
-                    $no=1;
-                    $tampil=pg_query($conn,"SELECT * FROM master_bidang WHERE deleted_at IS NULL ORDER BY nama ASC");
-                    while($r=pg_fetch_array($tampil)){
-                    	echo '<option value="'.$r['uid'].'">'.$r['nama'].'</option>';
-                    }
-                        ?>
-					</select>
-				</div>
-			</div>
-			<div class="form-group focused row">
-				<label class="form-control-label col-md-3 pt-2">Perusahaan</label>
-				<div class="col-md-9">
-					<select class="form-control form-control-alternative select2" name="perusahaan" required="">
-						<option value="">Pilih</option>
-						<?php
-                    $no=1;
-                    $tampil=pg_query($conn,"SELECT * FROM master_perusahaan WHERE deleted_at IS NULL ORDER BY nama_perusahaan ASC");
-                    while($r=pg_fetch_array($tampil)){
-                    	echo '<option value="'.$r['uid'].'">'.$r['nama_perusahaan'].'</option>';
-                    }
-                        ?>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="submit" class="btn btn-success btn-md"><i class="fa fa-save"></i> Simpan</button>
-			<button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><i class="fa fa-ban"></i> Batal</button>
-		</div>
-</form>
+<script type="text/javascript" src="addons/js/myscript.js"></script>

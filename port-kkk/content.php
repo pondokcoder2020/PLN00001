@@ -74,4 +74,8 @@ else if($module=='identitas'){
     include "content/identitas/data.php";
 }
 
+else if($module=='identitasparam'){
+    include "content/identitasparam/data.php";
+}
+
 ?>

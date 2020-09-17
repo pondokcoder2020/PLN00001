@@ -1,5 +1,11 @@
 <?php
-$d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$_GET[id]'"));
+$uid=isset($_GET['id']) ? $_GET['id'] : '';
+
+if(isset($_GET['id_unit'])){
+    $uid=base64_decode($_GET['id_unit']);
+}
+
+$d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_unit WHERE uid='$uid'"));
 ?>
 <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center">

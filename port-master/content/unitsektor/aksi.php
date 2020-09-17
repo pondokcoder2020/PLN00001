@@ -50,14 +50,60 @@ else{
 			
 		}
 		else{
-			$sql="INSERT INTO master_pegawai (nip,nama,foto,uid_unit,id_jenkel,password,kategori,bidang,perusahaan,created_at) VALUES ('$_POST[nip]','$_POST[nama]','$foto','$_POST[unit]','$_POST[id_jenkel]','$password','$_POST[kategori]','$_POST[bidang]','$_POST[perusahaan]','$waktu_sekarang')RETURNING uid";
+			$sql="INSERT INTO master_pegawai (nip,nama,foto,uid_unit,id_jenkel,password,created_at) VALUES ('$_POST[nip]','$_POST[nama]','$foto','$_POST[unit]','$_POST[id_jenkel]','$password','$waktu_sekarang')RETURNING uid";
 			$d=pg_fetch_array(pg_query($conn,$sql));
 		}
 		header("location: view-unitsektor-".$_POST['unit']."#tab-22");
 	}
 
-	elseif($act=='updatepegawai'){
-		print_r($_GET);
+	elseif($act=='tambahadmin'){
+		include "tambah_admin.php";
+	}
+
+	elseif($act=='updateadmin'){
+		include "edit_admin.php";
+	}
+
+	elseif($act=='inputadminsektor'){
+		$foto=crop_image('../../../images/pegawai/');
+
+		$cek=pg_query($conn,"SELECT * FROM master_pegawai WHERE nip='$_POST[nip]'");
+
+		if(pg_num_rows($cek) > 0){
+			
+		}
+		else{
+			$sql="INSERT INTO master_pegawai (nip,nama,foto,uid_unit,password,created_at) VALUES ('$_POST[nip]','$_POST[nama]','$foto','$_POST[unit]','$_POST[password]','$waktu_sekarang')RETURNING uid";
+			$d=pg_fetch_array(pg_query($conn,$sql));
+		}
+		header("location: view-unitsektor-".$_POST['unit']);
+	}
+
+	elseif($act=='updateadminsektor'){
+		$foto=crop_image('../../../images/pegawai/');
+
+		if($foto==""){
+			$foto=$_POST['foto'];
+		}
+
+		$sql="UPDATE master_pegawai SET nip='$_POST[nip]',nama='$_POST[nama]',foto='$foto',password='$_POST[password]',updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
+		$d=pg_fetch_array(pg_query($conn,$sql));
+
+		// print_r($sql);die();
+
+		header("location: view-unitsektor-".$_POST['unit']);
+	}
+
+	elseif($act=='deleteadminsektor'){
+		
+		$r=pg_fetch_array(pg_query($conn,"SELECT * FROM master_pegawai WHERE uid='$_GET[uid]'"));
+
+		$sql="UPDATE master_pegawai SET deleted_at='$waktu_sekarang' WHERE uid='$_GET[uid]'";
+		$d=pg_fetch_array(pg_query($conn,$sql));
+
+		// print_r($sql);die();
+
+		header("location: view-unitsektor-".$r['uid_unit']);
 	}
 
 	

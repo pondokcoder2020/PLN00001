@@ -1,6 +1,5 @@
 <?php
 $module=$_GET['module'];
-
 ?>
 <div class="mdk-drawer__content">
     <div class="sidebar sidebar-light sidebar-left simplebar" data-simplebar>
@@ -12,12 +11,31 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-menu-item <?php if($module=='master-inspeksi-peralatan' or $module=='detail-inspeksi' or $module=='parameter' or $module=='identitas'){echo "active";}?>">
-                <a class="sidebar-menu-button" href="master-inspeksi-peralatan">
-                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-wrench"></i>
-                    <span class="sidebar-menu-text">Master Inspeksi Peralatan</span>
+            <?php
+                $no=1;
+                $tampil=pg_query($conn,"SELECT * FROM master_aset_kategori");
+                while($rw=pg_fetch_array($tampil)){
+            ?>
+            <li class="sidebar-menu-item <?php if($module=='identitasparam'){echo "active open";}?>">
+                <a class="sidebar-menu-button" data-toggle="collapse" href="#fps<?php echo $no;?>">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-fire"></i>
+                    <span class="sidebar-menu-text"><?php echo $rw['nama'];?></span>
+                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
+                <ul class="sidebar-submenu collapse" id="fps<?php echo $no;?>">
+                    <?php
+                        $menux=pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id_kategori=".$rw['id']);
+                        while($rx=pg_fetch_array($menux)){
+                    ?>
+                    <li class="sidebar-menu-item <?php if($module==''){echo "active";}?>">
+                        <a class="sidebar-menu-button" href="view-identitasparam-<?php echo $rx['id'];?>">
+                            <span class="sidebar-menu-text"><?php echo $rx['nama'];?></span>
+                        </a>
+                    </li>
+                    <?php } ?>
+                </ul>
             </li>
+            <?php $no ++; } ?>
             <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="keluar">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-sign-out-alt"></i>

@@ -124,22 +124,23 @@ RewriteRule ^edit-detail-inspeksi$ content/detail-inspeksi/aksi.php?act=edit [QS
 RewriteRule ^aksi-edit-detail-inspeksi$ content/detail-inspeksi/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-detail-inspeksi-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/detail-inspeksi/aksi.php?act=delete&id_kategori=$1&id=$2 [QSA,L]
 
-
-## parameter pengecekan 
-RewriteRule ^parameter-([0-9a-zA-Z-]+)$ media.php?module=parameter&id=$1 [QSA,L]
-RewriteRule ^tambah-parameter-([0-9a-zA-Z-]+)$ content/parameter/aksi.php?act=tambah&id=$1 [QSA,L]
-RewriteRule ^aksi-tambah-parameter$ content/parameter/aksi.php?act=input [QSA,L]
-RewriteRule ^edit-parameter$ content/parameter/aksi.php?act=edit [QSA,L]
-RewriteRule ^aksi-edit-parameter$ content/parameter/aksi.php?act=update [QSA,L]
-RewriteRule ^aksi-hapus-parameter-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/parameter/aksi.php?act=delete&id_subkategori=$1&id=$2 [QSA,L]
-
 ## Identitas aset
 RewriteRule ^identitas-([0-9a-zA-Z-]+)$ media.php?module=identitas&id=$1 [QSA,L]
-RewriteRule ^tambah-identitas-([0-9a-zA-Z-]+)$ content/identitas/aksi.php?act=tambah&id=$1 [QSA,L]
-RewriteRule ^aksi-tambah-identitas$ content/identitas/aksi.php?act=input [QSA,L]
-RewriteRule ^edit-identitas$ content/identitas/aksi.php?act=edit [QSA,L]
-RewriteRule ^aksi-edit-identitas$ content/identitas/aksi.php?act=update [QSA,L]
-RewriteRule ^aksi-hapus-identitas-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/identitas/aksi.php?act=delete&id_subkategori=$1&id=$2 [QSA,L]
+RewriteRule ^tambah-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahidentitas&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-identitas$ content/identitasparam/aksi.php?act=inputidentitas [QSA,L]
+RewriteRule ^edit-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editidentitas&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-identitas$ content/identitasparam/aksi.php?act=updateidentitas [QSA,L]
+RewriteRule ^aksi-hapus-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deleteidentitas&id=$1& [QSA,L]
+
+## Parameter aset
+RewriteRule ^tambah-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahparameter&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-parameter$ content/identitasparam/aksi.php?act=inputparameter [QSA,L]
+RewriteRule ^edit-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editparameter&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-parameter$ content/identitasparam/aksi.php?act=updateparameter [QSA,L]
+RewriteRule ^aksi-hapus-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deleteparameter&id=$1& [QSA,L]
+
+## View identitas param
+RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]
 
 Options All -Indexes
 
