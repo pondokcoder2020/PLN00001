@@ -75,13 +75,6 @@ RewriteRule ^edit-item-kategori$ content/item-kategori/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-item-kategori$ content/item-kategori/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-item-kategori-([0-9a-zA-Z-]+)$ content/item-kategori/aksi.php?act=delete&id=$1 [QSA,L]
 
-## Menu item-varian 
-RewriteRule ^item-varian$ media.php?module=item-varian [QSA,L]
-RewriteRule ^tambah-item-varian$ content/item-varian/aksi.php?act=tambah [QSA,L]
-RewriteRule ^aksi-tambah-item-varian$ content/item-varian/aksi.php?act=input [QSA,L]
-RewriteRule ^edit-item-varian$ content/item-varian/aksi.php?act=edit [QSA,L]
-RewriteRule ^aksi-edit-item-varian$ content/item-varian/aksi.php?act=update [QSA,L]
-RewriteRule ^aksi-hapus-item-varian-([0-9a-zA-Z-]+)$ content/item-varian/aksi.php?act=delete&id=$1 [QSA,L]
 
 ## Menu item 
 RewriteRule ^item$ media.php?module=item [QSA,L]
@@ -128,7 +121,7 @@ RewriteRule ^aksi-hapus-detail-inspeksi-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content
 RewriteRule ^identitas-([0-9a-zA-Z-]+)$ media.php?module=identitas&id=$1 [QSA,L]
 RewriteRule ^tambah-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahidentitas&id=$1 [QSA,L]
 RewriteRule ^aksi-tambah-identitas$ content/identitasparam/aksi.php?act=inputidentitas [QSA,L]
-RewriteRule ^edit-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editidentitas&id=$1 [QSA,L]
+RewriteRule ^edit-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editidentitas&id_sub=$1 [QSA,L]
 RewriteRule ^aksi-edit-identitas$ content/identitasparam/aksi.php?act=updateidentitas [QSA,L]
 RewriteRule ^aksi-hapus-identitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deleteidentitas&id=$1& [QSA,L]
 
@@ -138,6 +131,20 @@ RewriteRule ^aksi-tambah-parameter$ content/identitasparam/aksi.php?act=inputpar
 RewriteRule ^edit-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editparameter&idsub=$1 [QSA,L]
 RewriteRule ^aksi-edit-parameter$ content/identitasparam/aksi.php?act=updateparameter [QSA,L]
 RewriteRule ^aksi-hapus-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deleteparameter&id=$1& [QSA,L]
+
+## varian aset
+RewriteRule ^tambah-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahvarian&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-varian$ content/identitasparam/aksi.php?act=inputvarian [QSA,L]
+RewriteRule ^edit-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editvarian&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-varian$ content/identitasparam/aksi.php?act=updatevarian [QSA,L]
+RewriteRule ^aksi-hapus-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletevarian&id=$1& [QSA,L]
+
+## kapasitas aset
+RewriteRule ^tambah-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahkapasitas&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-kapasitas$ content/identitasparam/aksi.php?act=inputkapasitas [QSA,L]
+RewriteRule ^edit-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editkapasitas&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-kapasitas$ content/identitasparam/aksi.php?act=updatekapasitas [QSA,L]
+RewriteRule ^aksi-hapus-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletekapasitas&id=$1& [QSA,L]
 
 ## View identitas param
 RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]

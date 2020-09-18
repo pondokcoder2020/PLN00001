@@ -15,8 +15,8 @@
                     <th>Jumlah</th>
                     <th>Satuan</th>
                     <th>Tgl Beli</th>
-                    <th>Jenis</th>
                     <th>Lokasi Penempatan</th>
+                    <th>Varian</th>
                     <th>Keterangan</th>
                     <th width="100px">Aksi</th>
                 </tr>
@@ -24,7 +24,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT * FROM master_aset_subkategori_identitas WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
+                $tampil=pg_query($conn,"SELECT a.*,b.nama as varian,c.nama as kapasitas FROM master_aset_subkategori_identitas a LEFT JOIN varian b ON a.id_varian=b.id LEFT JOIN kapasitas c ON a.kapasitas=c.id WHERE a.id_subkategori='$_GET[id]' ORDER BY a.nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
@@ -35,11 +35,11 @@
                         <td><?php echo $r['jumlah'];?></td>
                         <td><?php echo $r['satuan'];?></td>
                         <td><?php echo date('d/m/Y',strtotime($r['tanggal_beli']));?></td>
-                        <td><?php echo $r['jenis'];?></td>
                         <td><?php echo $r['lokasi_penempatan'];?></td>
+                        <td><?php echo $r['varian'];?></td>
                         <td><?php echo $r['keterangan'];?></td>
                         <td>
-                            <button onclick="edit_data('<?php echo $r['id']?>','edit-identitas-<?php echo $r['id']?>')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <button onclick="edit_data('<?php echo $r['id']?>','edit-identitas-<?php echo $_GET['id']?>')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </button>
                             

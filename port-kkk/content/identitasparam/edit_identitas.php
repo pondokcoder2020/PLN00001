@@ -26,7 +26,16 @@ $r=pg_fetch_array($q);
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Kapasitas</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kapasitas" value="<?php echo $r['kapasitas'];?>">
+						<select class="form-control" name="kapasitas">
+							<option value="">Pilih</option>
+							<?php 
+								$qc=pg_query($conn,"SELECT * FROM kapasitas WHERE id_subkategori='$_GET[id_sub]' ORDER BY nama ASC");
+								while($rx=pg_fetch_array($qc)){
+									$select = $r['kapasitas'] == $rx['id'] ? 'selected' : '';
+									echo '<option value="'.$rx['id'].'" '.$select.'>'.$rx['nama'].'</option>';
+								}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group focused row">
@@ -54,9 +63,18 @@ $r=pg_fetch_array($q);
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Jenis</label>
+					<label class="form-control-label col-md-3 pt-2">Jenis/Varian</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="jenis" value="<?php echo $r['jenis'];?>">
+						<select class="form-control" name="id_varian">
+							<option value="">Pilih</option>
+							<?php 
+								$qu=pg_query($conn,"SELECT * FROM varian WHERE id_subkategori='$_GET[id_sub]' ORDER BY nama ASC");
+								while($rx=pg_fetch_array($qu)){
+									$select = $rx['id'] == $r['id_varian'] ? 'selected' : '';
+ 									echo '<option value="'.$rx['id'].'" '.$select.'>'.$rx['nama'].'</option>';
+								}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group focused row">
