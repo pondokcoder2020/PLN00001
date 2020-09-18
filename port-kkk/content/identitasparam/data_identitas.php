@@ -10,6 +10,7 @@
                 <tr>
                     <th width="50px">No.</th>
                     <th>Nama</th>
+                    <th>Kode</th>
                     <th>Merk</th>
                     <th>Kapasitas</th>
                     <th>Jumlah</th>
@@ -30,6 +31,7 @@
                     <tr>
                         <td><?php echo $no;?></td>
                         <td><?php echo $r['nama'];?></td>
+                        <td><?php echo $r['kode'];?></td>
                         <td><?php echo $r['merk'];?></td>
                         <td><?php echo $r['kapasitas'];?></td>
                         <td><?php echo $r['jumlah'];?></td>

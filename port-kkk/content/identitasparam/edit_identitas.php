@@ -18,6 +18,12 @@ $r=pg_fetch_array($q);
 					</div>
 				</div>
 				<div class="form-group focused row">
+					<label class="form-control-label col-md-3 pt-2">Kode</label>
+					<div class="col-md-9">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kode" value="<?php echo $r['kode'];?>">
+					</div>
+				</div>
+				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Merk</label>
 					<div class="col-md-9">
 						<input type="text"  class="form-control form-control-alternative" placeholder="" name="merk" value="<?php echo $r['merk'];?>">
