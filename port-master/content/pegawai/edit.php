@@ -65,7 +65,12 @@ else{
 								<?php
 								$tampil=pg_query($conn,"SELECT * FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid_unit='$_SESSION[uid_unit]' ORDER BY nama");
 								while($r=pg_fetch_array($tampil)){
-									echo"<option value='$r[uid]'>$r[nama]</option>";
+									if($r['uid']==$d['uid_jabatan']){
+										echo"<option value='$r[uid]' selected>$r[nama]</option>";
+									}
+									else{
+										echo"<option value='$r[uid]'>$r[nama]</option>";
+									}
 								}
 								?>
 							</select>

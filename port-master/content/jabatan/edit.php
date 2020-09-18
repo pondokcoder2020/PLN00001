@@ -18,7 +18,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_pegawai_jabatan WHERE uid
                     <select name="uid_atasan" class="form-control">
 						<option value="">Tidak Ada</option>
 						<?php
-						$tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid!='$d[uid]' ORDER BY nama");
+						$tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid!='$d[uid]' AND uid_unit='$_SESSION[uid_unit]' ORDER BY nama");
 						while($r=pg_fetch_array($tampil)){
 							if($r['uid']==$d['uid_parent']){
 								echo"<option value='$r[uid]' selected>$r[nama]</option>";

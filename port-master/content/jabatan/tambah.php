@@ -14,7 +14,7 @@
                     <select name="uid_atasan" class="form-control">
 						<option value="">Tidak Ada</option>
 						<?php
-						$tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL ORDER BY nama");
+						$tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_jabatan WHERE deleted_at IS NULL AND uid_unit='$_SESSION[uid_unit]' ORDER BY nama");
 						while($r=pg_fetch_array($tampil)){
 							echo"<option value='$r[uid]'>$r[nama]</option>";
 						}

@@ -7,7 +7,7 @@ if (empty($_SESSION['login_user'])){
 else{
 	include "../../../konfig/koneksi.php";
 	include "../../../konfig/library.php";
-	include "../../../konfig/fungsi_upload.php";
+	include "../../../konfig/fungsi_thumb.php";
 	include "../../../konfig/myencrypt.php";
 
 	$act=$_GET['act'];

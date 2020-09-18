@@ -8,9 +8,9 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group focused">
-							<label class="form-control-label">NIP</label>
+							<label class="form-control-label">Username</label>
 							<input type="hidden"  class="form-control form-control-alternative"  name="unit" value="<?php echo $_GET['unit']?>">
-							<input type="text"  class="form-control form-control-alternative" placeholder="NIP" name="nip" autofocus required>
+							<input type="text"  class="form-control form-control-alternative" placeholder="Username" name="nip" autofocus required>
 						</div>
 					</div>
 					<div class="col-md-6">

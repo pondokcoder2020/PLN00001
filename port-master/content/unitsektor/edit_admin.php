@@ -13,10 +13,10 @@ $password=decrypt($d['password']);
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group focused">
-							<label class="form-control-label">NIP</label>
+							<label class="form-control-label">Username</label>
 							<input type="hidden"  class="form-control form-control-alternative"  name="uid" value="<?php echo $d['uid']?>">
 							<input type="hidden"  class="form-control form-control-alternative"  name="unit" value="<?php echo $d['uid_unit']?>">
-							<input type="text"  class="form-control form-control-alternative" placeholder="NIP" name="nip" autofocus value="<?php echo $d['nip']?>" required>
+							<input type="text"  class="form-control form-control-alternative" placeholder="Username" name="nip" autofocus value="<?php echo $d['nip']?>" required>
 						</div>
 					</div>
 					<div class="col-md-6">
