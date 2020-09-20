@@ -110,6 +110,33 @@ RewriteRule ^edit-pegawai$ content/pegawai/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-pegawai$ content/pegawai/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-pegawai-([0-9a-zA-Z-]+)$ content/pegawai/aksi.php?act=delete&id=$1 [QSA,L]
 
+##########################################################
+## Identitas aset
+
+## Parameter aset
+RewriteRule ^tambah-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahparameter&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-parameter$ content/identitasparam/aksi.php?act=inputparameter [QSA,L]
+RewriteRule ^edit-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editparameter&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-parameter$ content/identitasparam/aksi.php?act=updateparameter [QSA,L]
+RewriteRule ^aksi-hapus-parameter-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deleteparameter&id=$1& [QSA,L]
+
+## varian aset
+RewriteRule ^tambah-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahvarian&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-varian$ content/identitasparam/aksi.php?act=inputvarian [QSA,L]
+RewriteRule ^edit-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editvarian&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-varian$ content/identitasparam/aksi.php?act=updatevarian [QSA,L]
+RewriteRule ^aksi-hapus-varian-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletevarian&id=$1& [QSA,L]
+
+## kapasitas aset
+RewriteRule ^tambah-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=tambahkapasitas&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-kapasitas$ content/identitasparam/aksi.php?act=inputkapasitas [QSA,L]
+RewriteRule ^edit-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=editkapasitas&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-kapasitas$ content/identitasparam/aksi.php?act=updatekapasitas [QSA,L]
+RewriteRule ^aksi-hapus-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletekapasitas&id=$1& [QSA,L]
+
+## View identitas param
+RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]
+
 
 Options All -Indexes
 

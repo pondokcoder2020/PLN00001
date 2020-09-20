@@ -15,10 +15,16 @@ $module=$_GET['module'];
                 $no=1;
                 $tampil=pg_query($conn,"SELECT * FROM master_aset_kategori");
                 while($rw=pg_fetch_array($tampil)){
+                    if($no % 2 == 0){
+                        $ic="box";
+                    }
+                    else{
+                        $ic="fire";
+                    }
             ?>
             <li class="sidebar-menu-item <?php if($module=='identitasparam'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#fps<?php echo $no;?>">
-                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-fire"></i>
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-<?php echo $ic;?>"></i>
                     <span class="sidebar-menu-text"><?php echo $rw['nama'];?></span>
                     <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>

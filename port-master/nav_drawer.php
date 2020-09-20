@@ -28,6 +28,37 @@ $module=$_GET['module'];
             <?php
             if($_SESSION['id_level']=='1'){
             ?>
+            <?php
+                $no=1;
+                $tampil=pg_query($conn,"SELECT * FROM master_aset_kategori");
+                while($rw=pg_fetch_array($tampil)){
+                    if($no % 2 == 0){
+                        $ic="box";
+                    }
+                    else{
+                        $ic="fire";
+                    }
+            ?>
+            <li class="sidebar-menu-item <?php if($module=='identitasparam'){echo "active open";}?>">
+                <a class="sidebar-menu-button" data-toggle="collapse" href="#fps<?php echo $no;?>">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-<?php echo $ic;?>"></i>
+                    <span class="sidebar-menu-text"><?php echo $rw['nama'];?></span>
+                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                </a>
+                <ul class="sidebar-submenu collapse" id="fps<?php echo $no;?>">
+                    <?php
+                        $menux=pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id_kategori=".$rw['id']);
+                        while($rx=pg_fetch_array($menux)){
+                    ?>
+                    <li class="sidebar-menu-item <?php if($_GET['id']==$rx['id']){echo "active";}?>">
+                        <a class="sidebar-menu-button" href="view-identitasparam-<?php echo $rx['id'];?>">
+                            <span class="sidebar-menu-text"><?php echo $rx['nama'];?></span>
+                        </a>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </li>
+            <?php $no ++; } ?>
             <li class="sidebar-menu-item <?php if($module=='jabatan' OR $module=='jabatansektor' OR $module=='jabatanlayanan'){echo "active open";}?>">
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#jabatan">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">device_hub</i>

@@ -23,22 +23,7 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id
         <ul class="nav nav-tabs nav-tabs-custom" role="tablist" id="myTab">
             <li class="nav-item">
                 <a href="#tab-21" class="nav-link active" data-toggle="tab" role="tab" aria-controls="tab-21" aria-selected="true">
-                    <span class="nav-link__count">Identitas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#tab-22" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
-                    <span class="nav-link__count">Parameter</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#tab-23" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
-                    <span class="nav-link__count">Varian</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#tab-24" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
-                    <span class="nav-link__count">Kapasitas</span>
+                    <span class="nav-link__count">Aset</span>
                 </a>
             </li>
         </ul>
@@ -47,21 +32,6 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id
                 <div class="tab-pane active show fade" id="tab-21">
                     <?php
                     include "data_identitas.php";
-                    ?>
-                </div>
-                <div class="tab-pane fade" id="tab-22">
-                    <?php
-                    include "data_parameter.php";
-                    ?>
-                </div>
-                <div class="tab-pane fade" id="tab-23">
-                    <?php
-                    include "data_varian.php";
-                    ?>
-                </div>
-                <div class="tab-pane fade" id="tab-24">
-                    <?php
-                    include "data_kapasitas.php";
                     ?>
                 </div>
             </div>

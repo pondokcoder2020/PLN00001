@@ -57,4 +57,8 @@ else if($module=='pegawai'){
 else if($module=='unitlayanan'){
     include "content/unitlayanan/data.php";
 }
+
+else if($module=='identitasparam'){
+    include "content/identitasparam/data.php";
+}
 ?>
