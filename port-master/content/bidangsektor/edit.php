@@ -1,7 +1,7 @@
 <?php
 $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_bidang WHERE uid='$_POST[id]'"));
 ?>
-<form action="aksi-edit-bidang" method="POST" enctype="multipart/form-data">
+<form action="aksi-edit-bidangsektor" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="uid" value="<?php echo $_POST['id'];?>">
 	<div class="modal-dialog modal-md a-lightSpeed">
 		<div class="modal-content">

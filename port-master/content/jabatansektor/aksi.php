@@ -16,14 +16,14 @@ else{
 	
 	elseif($act=='input'){
 		if($_POST['uid_atasan']==''){
-			$sql="INSERT INTO master_jabatan(nama, created_at, id_level) VALUES ('$_POST[nama]',  '$waktu_sekarang', '1') RETURNING uid";
+			$sql="INSERT INTO master_jabatan(nama, created_at, id_level) VALUES ('$_POST[nama]',  '$waktu_sekarang', '2') RETURNING uid";
 		}
 		else{
-			$sql="INSERT INTO master_jabatan(nama, uid_parent, created_at, id_level) VALUES ('$_POST[nama]', '$_POST[uid_atasan]', '$waktu_sekarang', '1') RETURNING uid";
+			$sql="INSERT INTO master_jabatan(nama, uid_parent, created_at, id_level) VALUES ('$_POST[nama]', '$_POST[uid_atasan]', '$waktu_sekarang', '2') RETURNING uid";
 		}
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		
-		header("location: jabatan");
+		header("location: jabatansektor");
 	}
 	
 	elseif($act=='edit'){
@@ -39,7 +39,7 @@ else{
 		}
 		$result=pg_query($conn,$sql);
 
-		header("location: jabatan");
+		header("location: jabatansektor");
 	}
 	
 	elseif($act=='delete'){
@@ -47,7 +47,7 @@ else{
 		$result=pg_query($conn,$sql);
 
 		
-		header("location: jabatan");
+		header("location: jabatansektor");
 	}
 	pg_close($conn);
 }

@@ -1,0 +1,115 @@
+Table : master_pegawai
+uid
+nip
+nama
+password
+uid_jabatan
+uid_bidang
+foto
+uid_unit
+is_login
+last_login
+jenis_kelamin
+id_status
+C, U, D
+
+Table : master_unit
+uid
+kode
+nama
+no_telepon
+alamat
+uid_parent
+id_level => 1 : induk, 2 : sektor, 3 : layanan
+C, U, D
+
+master_jabatan
+uid
+nama
+uid_parent
+id_level_unit
+
+master_bidang
+uid
+nama
+id_level_unit
+
+master_aset_kategori
+id
+nama
+
+master_aset_subkategori
+id 
+nama
+id_kategori
+
+master_aset_subkategori_parameter
+id
+nama
+id_kategori
+id_subkategori
+C, U, D
+
+master_aset_subkategori_varian
+id
+nama
+id_kategori
+id_subkategori
+C, U, D
+
+master_aset_subkategori_kapasitas
+id
+nama
+id_kategori
+id_subkategori
+C, U, D
+
+master_aset
+uid
+kode
+id_subkategori
+uid_unit
+id_varian
+id_kapasitas
+nama_lokasi
+nama_perusahaan
+nomor
+satuan
+C, U, D
+
+master_sertifikat
+uid
+nama
+tanggal_awal
+tanggal_akhir
+keterangan
+C, U, D
+
+pegawai_sertifikat
+uid
+uid_pegawai
+uid_sertifikat
+nomor
+keterangan
+C, U, D
+
+training_usulan
+uid
+nomor_usulan
+tanggal_pelaksanaan
+uid_sertifikat
+uid_unit
+uid_pegawai (yang mengusulkan)
+id_status_usulan ()
+
+training_usulan_status
+id      1 : Menunggu approval manager sektor, 2 : Telah disetujui manager sektor dan menunggu approval dari pejabat k3 induk
+nama
+
+training_usulan_log
+id
+uid_training
+created_at
+id_status_usulan
+uid_pegawai (yang membuat log)
+keterangan

@@ -22,8 +22,24 @@ else if($module=='jabatan'){
     include "content/jabatan/data.php";
 }
 
+else if($module=='jabatansektor'){
+    include "content/jabatansektor/data.php";
+}
+
+else if($module=='jabatanlayanan'){
+    include "content/jabatanlayanan/data.php";
+}
+
 else if($module=='bidang'){
     include "content/bidang/data.php";
+}
+
+else if($module=='bidangsektor'){
+    include "content/bidangsektor/data.php";
+}
+
+else if($module=='bidanglayanan'){
+    include "content/bidanglayanan/data.php";
 }
 
 else if($module=='struktur'){

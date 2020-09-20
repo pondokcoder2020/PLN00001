@@ -62,6 +62,22 @@ RewriteRule ^aksi-edit-jabatan$ content/jabatan/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-jabatan-([0-9a-zA-Z-]+)$ content/jabatan/aksi.php?act=delete&id=$1 [QSA,L]
 
 
+RewriteRule ^jabatansektor$ media.php?module=jabatansektor [QSA,L]
+RewriteRule ^tambah-jabatansektor$ content/jabatansektor/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-jabatansektor$ content/jabatansektor/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-jabatansektor$ content/jabatansektor/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-jabatansektor$ content/jabatansektor/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-jabatansektor-([0-9a-zA-Z-]+)$ content/jabatansektor/aksi.php?act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^jabatanlayanan$ media.php?module=jabatanlayanan [QSA,L]
+RewriteRule ^tambah-jabatanlayanan$ content/jabatanlayanan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-jabatanlayanan$ content/jabatanlayanan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-jabatanlayanan$ content/jabatanlayanan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-jabatanlayanan$ content/jabatanlayanan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-jabatanlayanan-([0-9a-zA-Z-]+)$ content/jabatanlayanan/aksi.php?act=delete&id=$1 [QSA,L]
+
+
 RewriteRule ^bidang$ media.php?module=bidang [QSA,L]
 RewriteRule ^tambah-bidang$ content/bidang/aksi.php?act=tambah [QSA,L]
 RewriteRule ^aksi-tambah-bidang$ content/bidang/aksi.php?act=input [QSA,L]
@@ -69,6 +85,21 @@ RewriteRule ^edit-bidang$ content/bidang/aksi.php?act=edit [QSA,L]
 RewriteRule ^aksi-edit-bidang$ content/bidang/aksi.php?act=update [QSA,L]
 RewriteRule ^aksi-hapus-bidang-([0-9a-zA-Z-]+)$ content/bidang/aksi.php?act=delete&id=$1 [QSA,L]
 
+
+RewriteRule ^bidangsektor$ media.php?module=bidangsektor [QSA,L]
+RewriteRule ^tambah-bidangsektor$ content/bidangsektor/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-bidangsektor$ content/bidangsektor/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-bidangsektor$ content/bidangsektor/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-bidangsektor$ content/bidangsektor/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-bidangsektor-([0-9a-zA-Z-]+)$ content/bidangsektor/aksi.php?act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^bidanglayanan$ media.php?module=bidanglayanan [QSA,L]
+RewriteRule ^tambah-bidanglayanan$ content/bidanglayanan/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-bidanglayanan$ content/bidanglayanan/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-bidanglayanan$ content/bidanglayanan/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-bidanglayanan$ content/bidanglayanan/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-bidanglayanan-([0-9a-zA-Z-]+)$ content/bidanglayanan/aksi.php?act=delete&id=$1 [QSA,L]
 
 RewriteRule ^struktur$ media.php?module=struktur [QSA,L]
 

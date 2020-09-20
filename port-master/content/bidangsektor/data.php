@@ -4,10 +4,10 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="home"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Jabatan Induk</li>
+                    <li class="breadcrumb-item active" aria-current="page">Bidang Sektor</li>
                 </ol>
             </nav>
-            <h3 class="m-0">Jabatan Induk</h3>
+            <h3 class="m-0">Bidang Sektor</h3>
         </div>
         <button type="button" class="btn btn-info ml-3 btnTambah"><i class="fa fa-plus"></i> Tambah</button>
     </div>
@@ -22,27 +22,18 @@
                         <tr>
                             <th width="50px">No.</th>
                             <th>Nama</th>
-                            <th>Atasan</th>
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT uid, nama, uid_parent FROM master_jabatan WHERE deleted_at IS NULL AND id_level='1' ORDER BY nama");
+                        $tampil=pg_query($conn,"SELECT uid, nama FROM master_bidang WHERE deleted_at IS NULL AND id_level='2' ORDER BY nama");
                         while($r=pg_fetch_array($tampil)){
-                            $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_jabatan WHERE uid='$r[uid_parent]' AND deleted_at IS NULL"));
-                            if($a['nama']!=''){
-                                $atasan=$a['nama'];
-                            }
-                            else{
-                                $atasan="-";
-                            }
                             ?>
                             <tr>
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $r['nama'];?></td>
-                                <td><?php echo $atasan;?></td>
                                 <td>
                                     <button type="button" rel="tooltip" class="btn btn-sm btn-warning btnEdit" data-toggle="tooltip" data-placement="top" title="Edit" id="<?php echo $r['uid'];?>">
                                         <i class="fa fa-edit"></i>
@@ -64,4 +55,4 @@
     </div>
 </div>
 	
-<script type="text/javascript" src="addons/js/jabatan.js"></script>
+<script type="text/javascript" src="addons/js/bidangsektor.js"></script>

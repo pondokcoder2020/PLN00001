@@ -11,12 +11,6 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Dashboard</span>
                 </a>
             </li>
-<<<<<<< HEAD
-            <li class="sidebar-menu-item <?php if($module=='perusahaan' or $module=='jabatan' or $module=='bidang' or $module=='kategori-personil' or $module=='unit'){echo "active open";}?>">
-                <a class="sidebar-menu-button" data-toggle="collapse" href="#personil_master">
-                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
-                    <span class="sidebar-menu-text">Data FPS</span>
-=======
             <?php
                 $no=1;
                 $tampil=pg_query($conn,"SELECT * FROM master_aset_kategori");
@@ -26,7 +20,6 @@ $module=$_GET['module'];
                 <a class="sidebar-menu-button" data-toggle="collapse" href="#fps<?php echo $no;?>">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-fire"></i>
                     <span class="sidebar-menu-text"><?php echo $rw['nama'];?></span>
->>>>>>> e526ae2a71f7161420f9e3e04298d08c1c905872
                     <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
                 <ul class="sidebar-submenu collapse" id="fps<?php echo $no;?>">
@@ -34,7 +27,7 @@ $module=$_GET['module'];
                         $menux=pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id_kategori=".$rw['id']);
                         while($rx=pg_fetch_array($menux)){
                     ?>
-                    <li class="sidebar-menu-item <?php if($module==''){echo "active";}?>">
+                    <li class="sidebar-menu-item <?php if($_GET['id']==$rx['id']){echo "active";}?>">
                         <a class="sidebar-menu-button" href="view-identitasparam-<?php echo $rx['id'];?>">
                             <span class="sidebar-menu-text"><?php echo $rx['nama'];?></span>
                         </a>

@@ -1,4 +1,4 @@
-<form action="aksi-tambah-jabatan" method="POST" enctype="multipart/form-data">
+<form action="aksi-tambah-jabatanlayanan" method="POST" enctype="multipart/form-data">
 	<div class="modal-dialog modal-md a-lightSpeed">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -14,7 +14,7 @@
                     <select name="uid_atasan" class="form-control">
 						<option value="">Tidak Ada</option>
 						<?php
-						$tampil=pg_query($conn,"SELECT uid, nama FROM master_jabatan WHERE deleted_at IS NULL AND id_level='1' ORDER BY nama");
+						$tampil=pg_query($conn,"SELECT uid, nama FROM master_jabatan WHERE deleted_at IS NULL AND id_level='3' ORDER BY nama");
 						while($r=pg_fetch_array($tampil)){
 							echo"<option value='$r[uid]'>$r[nama]</option>";
 						}

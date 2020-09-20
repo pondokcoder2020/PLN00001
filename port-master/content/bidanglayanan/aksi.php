@@ -15,10 +15,10 @@ else{
 	}
 	
 	elseif($act=='input'){
-		$sql="INSERT INTO master_bidang (nama, created_at, id_level) VALUES ('$_POST[nama]',  '$waktu_sekarang', '1') RETURNING uid";
+		$sql="INSERT INTO master_bidang (nama, created_at, id_level) VALUES ('$_POST[nama]',  '$waktu_sekarang', '3') RETURNING uid";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		
-		header("location: bidang");
+		header("location: bidanglayanan");
 	}
 	
 	elseif($act=='edit'){
@@ -29,7 +29,7 @@ else{
 		$sql="UPDATE master_bidang SET nama='$_POST[nama]', updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
 		$result=pg_query($conn,$sql);
 
-		header("location: bidang");
+		header("location: bidanglayanan");
 	}
 	
 	elseif($act=='delete'){
@@ -37,7 +37,7 @@ else{
 		$result=pg_query($conn,$sql);
 
 		
-		header("location: bidang");
+		header("location: bidanglayanan");
 	}
 	pg_close($conn);
 }

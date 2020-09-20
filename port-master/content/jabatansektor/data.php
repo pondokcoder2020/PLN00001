@@ -4,10 +4,10 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="home"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Jabatan Induk</li>
+                    <li class="breadcrumb-item active" aria-current="page">Jabatan Sektor</li>
                 </ol>
             </nav>
-            <h3 class="m-0">Jabatan Induk</h3>
+            <h3 class="m-0">Jabatan Sektor</h3>
         </div>
         <button type="button" class="btn btn-info ml-3 btnTambah"><i class="fa fa-plus"></i> Tambah</button>
     </div>
@@ -29,7 +29,7 @@
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT uid, nama, uid_parent FROM master_jabatan WHERE deleted_at IS NULL AND id_level='1' ORDER BY nama");
+                        $tampil=pg_query($conn,"SELECT uid, nama, uid_parent FROM master_jabatan WHERE deleted_at IS NULL AND id_level='2' ORDER BY nama");
                         while($r=pg_fetch_array($tampil)){
                             $a=pg_fetch_array(pg_query($conn,"SELECT nama FROM master_jabatan WHERE uid='$r[uid_parent]' AND deleted_at IS NULL"));
                             if($a['nama']!=''){
@@ -64,4 +64,4 @@
     </div>
 </div>
 	
-<script type="text/javascript" src="addons/js/jabatan.js"></script>
+<script type="text/javascript" src="addons/js/jabatansektor.js"></script>

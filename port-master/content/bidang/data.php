@@ -4,11 +4,10 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="home"><i class="material-icons icon-20pt">home</i></a></li>
-                    <li class="breadcrumb-item"><a href="#">Kepegawaian</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Bidang</li>
+                    <li class="breadcrumb-item active" aria-current="page">Bidang Induk</li>
                 </ol>
             </nav>
-            <h3 class="m-0">Bidang</h3>
+            <h3 class="m-0">Bidang Induk</h3>
         </div>
         <button type="button" class="btn btn-info ml-3 btnTambah"><i class="fa fa-plus"></i> Tambah</button>
     </div>
@@ -29,7 +28,7 @@
                     <tbody>
                         <?php
                         $no=1;
-                        $tampil=pg_query($conn,"SELECT uid, nama FROM master_pegawai_bidang WHERE deleted_at IS NULL AND uid_unit='$_SESSION[uid_unit]' ORDER BY nama");
+                        $tampil=pg_query($conn,"SELECT uid, nama FROM master_bidang WHERE deleted_at IS NULL AND id_level='1' ORDER BY nama");
                         while($r=pg_fetch_array($tampil)){
                             ?>
                             <tr>
