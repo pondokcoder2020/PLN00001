@@ -13,6 +13,12 @@
 					</div>
 				</div>
 				<div class="form-group focused row">
+					<label class="form-control-label col-md-3 pt-2">Kode</label>
+					<div class="col-md-9">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kode">
+					</div>
+				</div>
+				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Merk</label>
 					<div class="col-md-9">
 						<input type="text"  class="form-control form-control-alternative" placeholder="" name="merk">
@@ -21,7 +27,15 @@
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Kapasitas</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kapasitas">
+						<select class="form-control" name="kapasitas">
+							<option value="">Pilih</option>
+							<?php 
+								$q=pg_query($conn,"SELECT * FROM kapasitas WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
+								while($r=pg_fetch_array($q)){
+									echo '<option value="'.$r['id'].'">'.$r['nama'].'</option>';
+								}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group focused row">
@@ -49,9 +63,17 @@
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Jenis</label>
+					<label class="form-control-label col-md-3 pt-2">Jenis/Varian</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="jenis">
+						<select class="form-control" name="id_varian">
+							<option value="">Pilih</option>
+							<?php 
+								$q=pg_query($conn,"SELECT * FROM varian WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
+								while($r=pg_fetch_array($q)){
+									echo '<option value="'.$r['id'].'">'.$r['nama'].'</option>';
+								}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group focused row">

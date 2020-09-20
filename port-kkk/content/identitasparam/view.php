@@ -31,6 +31,16 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id
                     <span class="nav-link__count">Parameter</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="#tab-23" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
+                    <span class="nav-link__count">Varian</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#tab-24" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
+                    <span class="nav-link__count">Kapasitas</span>
+                </a>
+            </li>
         </ul>
         <div class="card">
             <div class="card-body tab-content">
@@ -42,6 +52,16 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id
                 <div class="tab-pane fade" id="tab-22">
                     <?php
                     include "data_parameter.php";
+                    ?>
+                </div>
+                <div class="tab-pane fade" id="tab-23">
+                    <?php
+                    include "data_varian.php";
+                    ?>
+                </div>
+                <div class="tab-pane fade" id="tab-24">
+                    <?php
+                    include "data_kapasitas.php";
                     ?>
                 </div>
             </div>
