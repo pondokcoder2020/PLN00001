@@ -78,4 +78,8 @@ else if($module=='identitasparam'){
     include "content/identitasparam/data.php";
 }
 
+else if($module=='training'){
+    include "content/training/data.php";
+}
+
 ?>

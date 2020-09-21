@@ -146,8 +146,18 @@ RewriteRule ^edit-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act
 RewriteRule ^aksi-edit-kapasitas$ content/identitasparam/aksi.php?act=updatekapasitas [QSA,L]
 RewriteRule ^aksi-hapus-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletekapasitas&id=$1& [QSA,L]
 
+## training
+RewriteRule ^tambah-training$ content/training/aksi.php?act=tambahtraining [QSA,L]
+RewriteRule ^aksi-tambah-training$ content/training/aksi.php?act=inputtraining [QSA,L]
+RewriteRule ^edit-training-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=edittraining&idsub=$1 [QSA,L]
+RewriteRule ^aksi-edit-training$ content/training/aksi.php?act=updatetraining [QSA,L]
+RewriteRule ^aksi-hapus-training-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=deletetraining&id=$1& [QSA,L]
+
 ## View identitas param
 RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]
+
+## View Training
+RewriteRule ^training$ media.php?module=training&act=view [QSA,L]
 
 Options All -Indexes
 

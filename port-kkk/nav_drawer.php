@@ -43,6 +43,12 @@ $module=$_GET['module'];
             </li>
             <?php $no ++; } ?>
             <li class="sidebar-menu-item">
+                <a class="sidebar-menu-button" href="training">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-users"></i>
+                    <span class="sidebar-menu-text">Training</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="keluar">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-sign-out-alt"></i>
                     <span class="sidebar-menu-text">Logout</span>
