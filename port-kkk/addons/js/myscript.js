@@ -63,3 +63,22 @@ function hapus_data(id,url){
 
     return false;
 }
+
+function approved_btn(id,url){
+    // alert(id);
+    Swal.fire({
+        title: 'Yakin?',
+        text: "Anda akan mengkonfirmasi approval ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Approve!'
+    }).then((result) => {
+        if(result.value) {
+            document.location.href = url +'-'+ id;
+        }
+    });
+
+    return false;
+}

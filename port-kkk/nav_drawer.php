@@ -48,6 +48,12 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Training</span>
                 </a>
             </li>
+            <li class="sidebar-menu-item <?php if($module=='approvaltraining'){echo "active open";}?>">
+                <a class="sidebar-menu-button" href="approval-training">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-envelope"></i>
+                    <span class="sidebar-menu-text">Approval Training</span>
+                </a>
+            </li>
             <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="keluar">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-sign-out-alt"></i>

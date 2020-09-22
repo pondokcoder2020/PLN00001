@@ -82,4 +82,8 @@ else if($module=='training'){
     include "content/training/data.php";
 }
 
+else if($module=='approvaltraining'){
+    include "content/approval-training/data.php";
+}
+
 ?>

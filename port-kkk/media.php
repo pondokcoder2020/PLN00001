@@ -16,7 +16,7 @@ if($_SESSION['login_portal']==0){
 }
 else{
     include "../konfig/koneksi.php";
-    $pegawai=pg_fetch_array(pg_query($conn,"SELECT uid, nama, foto, nip FROM master_pegawai WHERE uid='$_SESSION[login_user]'"));
+    $pegawai=pg_fetch_array(pg_query($conn,"SELECT uid, nama, foto, nip, uid_jabatan, uid_bidang, id_kategori FROM master_pegawai WHERE uid='$_SESSION[login_user]'"));
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
