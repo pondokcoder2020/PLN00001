@@ -16,141 +16,76 @@ else{
 
 	$act=$_GET['act'];
 	if ($act=='tambahtraining'){
-		include "tambah_identitas.php";
+		include "tambah_training_usulan.php";
 	}
 
-	elseif ($act=='tambahparameter'){
-		include "tambah_parameter.php";
-	}
+	elseif ($act=='inputtraining'){
+		$tgl=date('Y-m-d',strtotime($_POST['tanggal_pelaksanaan']));
+		$uid_unit=$_SESSION['uid_unit'];
+		$uid_pegawai=$_SESSION['login_user'];
+		$berkas=upload_file('berkas','../../../document/');
 
-	elseif($act=='inputparameter'){
-
-		$sql="INSERT INTO master_aset_subkategori_parameter (nama,id_kategori,id_subkategori) VALUES ('$_POST[nama]','$rx[id_kategori]','$_POST[id_subkategori]')";
+		$sql="INSERT INTO training_usulan (nomor_usulan,tanggal_pelaksanaan,uid_sertifikat,uid_unit,uid_pegawai,id_status_usulan,berkas) VALUES ('$_POST[nomor_usulan]','$tgl','$_POST[uid_sertifikat]','$uid_unit','$uid_pegawai','$_POST[status]','$berkas')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
-
-		header("location: view-identitasparam-".$_POST['id_subkategori']."#tab-22");
-	}
-	
-	elseif($act=='inputidentitas'){
-
-		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="INSERT INTO master_aset_subkategori_identitas (unit,nama,kode,merk,kapasitas,jumlah,satuan,keterangan,id_subkategori,tanggal_beli,lokasi_penempatan,id_varian) VALUES ('$rx[uid_unit]','$_POST[nama]','$_POST[kode]','$_POST[merk]','$_POST[kapasitas]','$_POST[jumlah]','$_POST[satuan]','$_POST[keterangan]','$_POST[id_subkategori]','$tgl','$_POST[lokasi_penempatan]','$_POST[id_varian]')";
-		$d=pg_fetch_array(pg_query($conn,$sql));
-		header("location: view-identitasparam-".$_POST['id_subkategori']);
-	}
-	
-	elseif($act=='editidentitas'){
-		include "edit_identitas.php";
+		header("location: training");
 	}
 
-	elseif($act=='editparameter'){
-		include "edit_parameter.php";
+	elseif ($act=='edittraining'){
+		include "edit_training_usulan.php";
 	}
-	
-	elseif ($act=='updateidentitas'){
 
-		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="UPDATE master_aset_subkategori_identitas SET nama='$_POST[nama]',merk='$_POST[merk]',kapasitas='$_POST[kapasitas]',jumlah='$_POST[jumlah]',satuan='$_POST[satuan]',keterangan='$_POST[keterangan]',tanggal_beli='$tgl',lokasi_penempatan='$_POST[lokasi_penempatan]',id_varian='$_POST[id_varian]',kode='$_POST[kode]' WHERE id='$_POST[id]'";
+	elseif ($act=='updatetraining'){
+		$tgl=date('Y-m-d',strtotime($_POST['tanggal_pelaksanaan']));
+		$berkas_baru =upload_file('berkas','../../../document/');
+		$berkas = $berkas_baru == "" ? $_POST['berkas_lama'] : $berkas_baru;
+
+		$sql="UPDATE training_usulan SET nomor_usulan='$_POST[nomor_usulan]',tanggal_pelaksanaan='$_POST[tanggal_pelaksanaan]',uid_sertifikat='$_POST[uid_sertifikat]',id_status_usulan='$_POST[status]',berkas='$berkas' WHERE uid='$_POST[uid]'";
 		
 		$result=pg_query($conn,$sql);
 
-		// print_r($sql);die();
-
-		header("location: view-identitasparam-".$_POST['id_subkategori']);
+		header("location: training");
 	}
 
-	elseif ($act=='updateparameter'){
-		$sql="UPDATE master_aset_subkategori_parameter SET nama='$_POST[nama]' WHERE id='$_POST[id]'";
+	elseif ($act=='deletetraining'){
+
+		$sql="DELETE FROM training_usulan WHERE uid='$_GET[uid]'";
 		
 		$result=pg_query($conn,$sql);
-		// print_r($sql);die();
-		header("location: view-identitasparam-".$_POST['id_subkategori']."#tab-22");
-	}
-	
-	elseif($act=='deleteidentitas'){
-		$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_identitas WHERE id='$_GET[id]'");
-		$r=pg_fetch_array($q);
-
-		$sql="DELETE FROM master_aset_subkategori_identitas WHERE id='$_GET[id]'";
-		$result=pg_query($conn,$sql);
-
-		header("location: view-identitasparam-".$r['id_subkategori']);
+		
+		header("location: training");
 	}
 
-	elseif($act=='deleteparameter'){
-		$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_parameter WHERE id='$_GET[id]'");
-		$r=pg_fetch_array($q);
-
-		$sql="DELETE FROM master_aset_subkategori_parameter WHERE id='$_GET[id]'";
-		$result=pg_query($conn,$sql);
-
-		header("location: view-identitasparam-".$r['id_subkategori']."#tab-22");
+	elseif ($act=='tambahusulanpegawai'){
+		include "tambah_usulan_pegawai.php";
 	}
 
-	elseif ($act=="tambahvarian"){
-		include "tambah_varian.php";
-	}
+	elseif ($act=='inputusulanpegawai'){
 
-	elseif ($act=="editvarian"){
-		include "edit_varian.php";
-	}
-
-	elseif($act=='inputvarian'){
-		$sql="INSERT INTO varian (nama,keterangan,id_subkategori) VALUES ('$_POST[nama]','$_POST[keterangan]','$_POST[id_subkategori]')";
+		$sql="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$_POST[uid_usulan]','$_POST[uid_pegawai]','$_POST[keterangan]')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
-
-		header("location: view-identitasparam-".$_POST['id_subkategori'].'#tab-23');
+		header("location: training#tab-22");
 	}
 
-	elseif($act=='updatevarian'){
-		$sql="UPDATE varian SET nama='$_POST[nama]',keterangan='$_POST[keterangan]' WHERE id='$_POST[id]'";
+	elseif ($act=='editusulanpegawai'){
+		include "edit_usulan_pegawai.php";
+	}
+
+	elseif ($act=='updateusulanpegawai'){
+
+		$sql="UPDATE training_usulan_pegawai SET uid_usulan='$_POST[uid_usulan]',uid_pegawai='$_POST[uid_pegawai]',keterangan='$_POST[keterangan]' WHERE uid='$_POST[uid]'";
 		
 		$result=pg_query($conn,$sql);
-		// print_r($sql);die();
-		header("location: view-identitasparam-".$_POST['id_subkategori']."#tab-23");
+		
+		header("location: training#tab-22");
 	}
 
-	elseif($act=='deletevarian'){
-		$q=pg_query($conn,"SELECT * FROM varian WHERE id='$_GET[id]'");
-		$r=pg_fetch_array($q);
+	elseif ($act=='deleteusulanpegawai'){
 
-		$sql="DELETE FROM varian WHERE id='$_GET[id]'";
-		$result=pg_query($conn,$sql);
-
-		header("location: view-identitasparam-".$r['id_subkategori']."#tab-23");
-	}
-
-	elseif ($act=="tambahkapasitas"){
-		include "tambah_kapasitas.php";
-	}
-
-	elseif ($act=="editkapasitas"){
-		include "edit_kapasitas.php";
-	}
-
-	elseif($act=='inputkapasitas'){
-		$sql="INSERT INTO kapasitas (nama,keterangan,id_subkategori) VALUES ('$_POST[nama]','$_POST[keterangan]','$_POST[id_subkategori]')";
-		$d=pg_fetch_array(pg_query($conn,$sql));
-
-		header("location: view-identitasparam-".$_POST['id_subkategori'].'#tab-24');
-	}
-
-	elseif($act=='updatekapasitas'){
-		$sql="UPDATE kapasitas SET nama='$_POST[nama]',keterangan='$_POST[keterangan]' WHERE id='$_POST[id]'";
+		$sql="DELETE FROM training_usulan_pegawai WHERE uid='$_GET[uid]'";
 		
 		$result=pg_query($conn,$sql);
-		// print_r($sql);die();
-		header("location: view-identitasparam-".$_POST['id_subkategori']."#tab-24");
-	}
-
-	elseif($act=='deletekapasitas'){
-		$q=pg_query($conn,"SELECT * FROM kapasitas WHERE id='$_GET[id]'");
-		$r=pg_fetch_array($q);
-
-		$sql="DELETE FROM kapasitas WHERE id='$_GET[id]'";
-		$result=pg_query($conn,$sql);
-
-		header("location: view-identitasparam-".$r['id_subkategori']."#tab-24");
+		
+		header("location: training#tab-22");
 	}
 
 	

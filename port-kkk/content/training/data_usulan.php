@@ -22,23 +22,24 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.*,b.nama as unit,c.nama as pegawai,d.nama as sertifkat FROM training_usulan a LEFT JOIN master_unit b ON a.uid_unit=b.uid LEFT JOIN master_pegawai c ON a.uid_pegawai=c.uid LEFT JOIN master_sertifikat d ON a.uid_sertifikat=b.uid");
+                $tampil=pg_query($conn,"SELECT a.*,b.nama as unit,c.nama as pegawai,d.nama as sertifkat,e.nama as status FROM training_usulan a LEFT JOIN master_unit b ON a.uid_unit=b.uid LEFT JOIN master_pegawai c ON a.uid_pegawai=c.uid LEFT JOIN master_sertifikat d ON a.uid_sertifikat=d.uid_sertifikat LEFT JOIN status_usulan e ON a.id_status_usulan=e.id");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
                         <td><?php echo $no;?></td>
                         <td><?php echo $r['nomor_usulan'];?></td>
-                        <td><?php echo $r['tanggal_pelaksanaan'];?></td>
+                        <td><?php echo date('d/m/Y',strtotime($r['tanggal_pelaksanaan']));?></td>
                         <td><?php echo $r['sertifkat'];?></td>
                         <td><?php echo $r['unit'];?></td>
                         <td><?php echo $r['pegawai'];?></td>
-                        <td><?php echo $r['berkas'];?></td>
+                        <td><a download="../../document/<?php echo $r['berkas'];?>" href="../../document/<?php echo $r['berkas'];?>">Lihat</a></td>
+                        <td><?php echo $r['status'];?></td>
                         <td>
-                            <button onclick="edit_data('<?php echo $r['uid']?>','edit-identitas')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <button onclick="edit_data('<?php echo $r['uid']?>','edit-training')" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </button>
                             
-                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid']?>','aksi-hapus-identitas')">
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid']?>','aksi-hapus-training')">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>

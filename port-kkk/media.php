@@ -172,6 +172,9 @@ else{
         });
 
         $("#select2").select2();
+        $("#example1").dataTable();
+        $("#example2").dataTable();
+        $("#example3").dataTable();
     </script>
 </body>
 

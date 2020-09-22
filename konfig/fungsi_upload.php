@@ -11,7 +11,7 @@ function acak($panjang){
 
 function upload_file($file,$path){
   if($_FILES[$file]['name']!=""){
-  	$ekstensi_diperbolehkan	= array('png','jpg','jpeg','xlxx','doc','docx','pdf');
+  	$ekstensi_diperbolehkan	= array('png','jpg','jpeg','xlsx','doc','docx','pdf','xlx');
   	$nama_file=$_FILES[$file]['name'];
   	$x = explode('.', $nama_file);
   	$ekstensi = strtolower(end($x));

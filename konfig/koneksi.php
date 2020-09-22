@@ -2,7 +2,7 @@
  
  $host = "localhost";
  $port = "5432";
- $dbname = "plnsidak";
+ $dbname = "pln";
  $user = "postgres";
  $password = "root";
  $pg_options = "--client_encoding=UTF8";

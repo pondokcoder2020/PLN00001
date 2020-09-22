@@ -42,7 +42,7 @@ $module=$_GET['module'];
                 </ul>
             </li>
             <?php $no ++; } ?>
-            <li class="sidebar-menu-item">
+            <li class="sidebar-menu-item <?php if($module=='training'){echo "active open";}?>">
                 <a class="sidebar-menu-button" href="training">
                     <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-users"></i>
                     <span class="sidebar-menu-text">Training</span>

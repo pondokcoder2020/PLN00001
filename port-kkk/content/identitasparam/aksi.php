@@ -34,7 +34,7 @@ else{
 	elseif($act=='inputidentitas'){
 
 		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="INSERT INTO master_aset_subkategori_identitas (unit,nama,kode,merk,kapasitas,jumlah,satuan,keterangan,id_subkategori,tanggal_beli,lokasi_penempatan,id_varian) VALUES ('$rx[uid_unit]','$_POST[nama]','$_POST[kode]','$_POST[merk]','$_POST[kapasitas]','$_POST[jumlah]','$_POST[satuan]','$_POST[keterangan]','$_POST[id_subkategori]','$tgl','$_POST[lokasi_penempatan]','$_POST[id_varian]')";
+		$sql="INSERT INTO aset (unit,nama,kode,merk,kapasitas,jumlah,satuan,keterangan,id_subkategori,tanggal_beli,lokasi_penempatan,id_varian) VALUES ('$rx[uid_unit]','$_POST[nama]','$_POST[kode]','$_POST[merk]','$_POST[kapasitas]','$_POST[jumlah]','$_POST[satuan]','$_POST[keterangan]','$_POST[id_subkategori]','$tgl','$_POST[lokasi_penempatan]','$_POST[id_varian]')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		header("location: view-identitasparam-".$_POST['id_subkategori']);
 	}
@@ -50,7 +50,7 @@ else{
 	elseif ($act=='updateidentitas'){
 
 		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="UPDATE master_aset_subkategori_identitas SET nama='$_POST[nama]',merk='$_POST[merk]',kapasitas='$_POST[kapasitas]',jumlah='$_POST[jumlah]',satuan='$_POST[satuan]',keterangan='$_POST[keterangan]',tanggal_beli='$tgl',lokasi_penempatan='$_POST[lokasi_penempatan]',id_varian='$_POST[id_varian]',kode='$_POST[kode]' WHERE id='$_POST[id]'";
+		$sql="UPDATE aset SET nama='$_POST[nama]',merk='$_POST[merk]',kapasitas='$_POST[kapasitas]',jumlah='$_POST[jumlah]',satuan='$_POST[satuan]',keterangan='$_POST[keterangan]',tanggal_beli='$tgl',lokasi_penempatan='$_POST[lokasi_penempatan]',id_varian='$_POST[id_varian]',kode='$_POST[kode]' WHERE id='$_POST[id]'";
 		
 		$result=pg_query($conn,$sql);
 
@@ -68,10 +68,10 @@ else{
 	}
 	
 	elseif($act=='deleteidentitas'){
-		$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_identitas WHERE id='$_GET[id]'");
+		$q=pg_query($conn,"SELECT * FROM aset WHERE id='$_GET[id]'");
 		$r=pg_fetch_array($q);
 
-		$sql="DELETE FROM master_aset_subkategori_identitas WHERE id='$_GET[id]'";
+		$sql="DELETE FROM aset WHERE id='$_GET[id]'";
 		$result=pg_query($conn,$sql);
 
 		header("location: view-identitasparam-".$r['id_subkategori']);

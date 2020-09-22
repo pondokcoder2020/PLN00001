@@ -149,9 +149,16 @@ RewriteRule ^aksi-hapus-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.p
 ## training
 RewriteRule ^tambah-training$ content/training/aksi.php?act=tambahtraining [QSA,L]
 RewriteRule ^aksi-tambah-training$ content/training/aksi.php?act=inputtraining [QSA,L]
-RewriteRule ^edit-training-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=edittraining&idsub=$1 [QSA,L]
+RewriteRule ^edit-training$ content/training/aksi.php?act=edittraining [QSA,L]
 RewriteRule ^aksi-edit-training$ content/training/aksi.php?act=updatetraining [QSA,L]
-RewriteRule ^aksi-hapus-training-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=deletetraining&id=$1& [QSA,L]
+RewriteRule ^aksi-hapus-training-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=deletetraining&uid=$1 [QSA,L]
+
+## usulan-pegawai
+RewriteRule ^tambah-usulan-pegawai$ content/training/aksi.php?act=tambahusulanpegawai [QSA,L]
+RewriteRule ^aksi-tambah-usulan-pegawai$ content/training/aksi.php?act=inputusulanpegawai [QSA,L]
+RewriteRule ^edit-usulan-pegawai$ content/training/aksi.php?act=editusulanpegawai [QSA,L]
+RewriteRule ^aksi-edit-usulan-pegawai$ content/training/aksi.php?act=updateusulanpegawai [QSA,L]
+RewriteRule ^aksi-hapus-usulan-pegawai-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=deleteusulanpegawai&uid=$1 [QSA,L]
 
 ## View identitas param
 RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]

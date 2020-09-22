@@ -10,7 +10,7 @@ $username=pg_escape_string($conn,$_POST['username']);
 //Here converting passsword into MD5 encryption. 
 $password=encrypt(pg_escape_string($conn,$_POST['password']));
 
-$result=pg_query($conn,"SELECT uid FROM master_pegawai WHERE nip='$username' AND password = '$password' AND deleted_at IS NULL");
+$result=pg_query($conn,"SELECT a.uid, b.uid AS uid_unit, b.id_level FROM master_pegawai a, master_unit b WHERE a.uid_unit=b.uid AND a.nip='$username' AND a.password='$password' AND a.deleted_at IS NULL");
 $row=pg_fetch_array($result);
 if($row['uid']!=''){
 	echo "ok";
@@ -23,6 +23,8 @@ if($row['uid']!=''){
 	$_SESSION['id_session']    = $sid;
 	$_SESSION['username']      = $_POST['username'];
 	$_SESSION['login_portal']   = 1;
+	$_SESSION['uid_unit']      = $row['uid_unit'];
+	$_SESSION['id_level']      = $row['id_level'];
 	
 	pg_query($conn,"UPDATE pegawai SET is_login='Y', last_login='$waktu_sekarang' WHERE uid=".$row['uid']);
 	

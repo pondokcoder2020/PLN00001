@@ -1,5 +1,5 @@
 <?php
-$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_identitas WHERE id='$_POST[id]'");
+$q=pg_query($conn,"SELECT * FROM aset WHERE id='$_POST[id]'");
 $r=pg_fetch_array($q);
 ?>
 <form action="aksi-edit-identitas" method="POST" enctype="multipart/form-data">
