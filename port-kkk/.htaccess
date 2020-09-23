@@ -160,13 +160,14 @@ RewriteRule ^edit-usulan-pegawai$ content/training/aksi.php?act=editusulanpegawa
 RewriteRule ^aksi-edit-usulan-pegawai$ content/training/aksi.php?act=updateusulanpegawai [QSA,L]
 RewriteRule ^aksi-hapus-usulan-pegawai-([0-9a-zA-Z-]+)$ content/training/aksi.php?act=deleteusulanpegawai&uid=$1 [QSA,L]
 
+RewriteRule ^entry-sertifikat$ content/training/aksi.php?act=entrysertifikat [QSA,L]
+RewriteRule ^aksi-entry-sertifikat$ content/training/aksi.php?act=inputsertifikat [QSA,L]
+
 ## approval-training
 RewriteRule ^approval-training$ media.php?module=approvaltraining [QSA,L]
-RewriteRule ^tambah-approval-training-([0-9a-zA-Z-]+)$ content/approval-trainingparam/aksi.php?act=tambahapprovaltraining&id=$1 [QSA,L]
-RewriteRule ^aksi-tambah-approval-training$ content/approval-trainingparam/aksi.php?act=inputapproval-training [QSA,L]
-RewriteRule ^edit-approval-training-([0-9a-zA-Z-]+)$ content/approval-trainingparam/aksi.php?act=editapproval-training&id_sub=$1 [QSA,L]
-RewriteRule ^aksi-edit-approval-training$ content/approval-trainingparam/aksi.php?act=updateapproval-training [QSA,L]
-RewriteRule ^aksi-hapus-approval-training-([0-9a-zA-Z-]+)$ content/approval-trainingparam/aksi.php?act=deleteapproval-training&id=$1& [QSA,L]
+RewriteRule ^approved-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/approval-training/aksi.php?act=approved&uid=$2&status=$1 [QSA,L]
+RewriteRule ^reject-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/approval-training/aksi.php?act=approved&uid=$2&status=$1 [QSA,L]
+
 
 ## View identitas param
 RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]

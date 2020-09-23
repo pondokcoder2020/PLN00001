@@ -88,6 +88,22 @@ else{
 		header("location: training#tab-22");
 	}
 
+	elseif ($act=='entrysertifikat'){
+		include "entry_sertifikat.php";
+	}
+
+	elseif ($act=='inputsertifikat'){
+
+		$status_training="UPDATE training_usulan_pegawai SET selesai_training='selesai' WHERE uid='$_POST[uid]'";
+		
+		$result=pg_query($conn,$status_training);
+
+		$sql="INSERT INTO pegawai_sertifikat (uid_pegawai,uid_sertifikat,nomor,keterangan) VALUES ('$_POST[uid_pegawai]','$_POST[uid_sertifikat]','$_POST[nomor]','$_POST[keterangan]')";
+		$d=pg_fetch_array(pg_query($conn,$sql));
+		
+		header("location: training#tab-22");
+	}
+
 	
 	pg_close($conn);
 }

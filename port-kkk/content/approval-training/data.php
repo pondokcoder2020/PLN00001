@@ -35,13 +35,16 @@
                 <?php
                 
                 $ubah="";
+                $tolak="";
                 if($pegawai['uid_jabatan']=='5f861064-3019-82b6-edc7-97be309a02d0'){
                     $status='3';
                     $ubah='7';
+                    $tolak='5';
                 }
                 if($pegawai['uid_jabatan']=='ec61e0f7-d6b2-2ede-e679-f862b41ed9d2'){
                     $status='7';
                     $ubah='11';
+                    $tolak='9';
                 }
                 if($pegawai['uid_jabatan']=='ac99005c-ac71-4c0c-a4d1-50862b4a433b'){
                     $status='11';
@@ -70,8 +73,18 @@
                         <td><a download="../../document/<?php echo $r['berkas'];?>" href="../../document/<?php echo $r['berkas'];?>">Lihat</a></td>
                         <td><?php echo $r['status'];?></td>
                         <td>
+
+                            <?php
+                            if($tolak !=""){
+                            ?>
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Tolak?" onclick="reject_btn('<?php echo str_replace("=", "", base64_encode($r['uid']));?>','reject-<?php echo $tolak;?>')">
+                                <i class="fa fa-ban"></i>
+                            </button>
+                            <?php
+                                }
+                            ?>
                             
-                            <button type="button" rel="tooltip" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Approve?" onclick="approved_btn('<?php echo $r['uid']?>','approved-<?php echo $ubah;?>')">
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Terima?" onclick="approved_btn('<?php echo str_replace("=", "", base64_encode($r['uid']));?>','approved-<?php echo $ubah;?>')">
                                 <i class="fa fa-check"></i>
                             </button>
                         </td>

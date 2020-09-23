@@ -25,6 +25,11 @@
                     <span class="nav-link__count">Pegawai Training</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="#tab-23" class="nav-link" data-toggle="tab" role="tab" aria-selected="false">
+                    <span class="nav-link__count">Selesai Training</span>
+                </a>
+            </li>
         </ul>
         <div class="card">
             <div class="card-body tab-content">
@@ -36,6 +41,11 @@
                 <div class="tab-pane fade" id="tab-22">
                     <?php
                     include "data_usulan_pegawai.php";
+                    ?>
+                </div>
+                <div class="tab-pane fade" id="tab-23">
+                    <?php
+                    include "selesai_training.php";
                     ?>
                 </div>
             </div>

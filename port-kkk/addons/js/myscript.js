@@ -68,12 +68,31 @@ function approved_btn(id,url){
     // alert(id);
     Swal.fire({
         title: 'Yakin?',
-        text: "Anda akan mengkonfirmasi approval ini!",
+        text: "Anda akan menerima usulan ini!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Approve!'
+        confirmButtonText: 'Ya, Terima!'
+    }).then((result) => {
+        if(result.value) {
+            document.location.href = url +'-'+ id;
+        }
+    });
+
+    return false;
+}
+
+function reject_btn(id,url){
+    // alert(id);
+    Swal.fire({
+        title: 'Yakin?',
+        text: "Anda akan menolak usulan ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Tolak!'
     }).then((result) => {
         if(result.value) {
             document.location.href = url +'-'+ id;
