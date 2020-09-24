@@ -1,5 +1,5 @@
 <?php
-$q=pg_query($conn,"SELECT * FROM training_usulan_pegawai WHERE uid='$_POST[id]'");
+$q=pg_query($conn,"SELECT a.*,b.nama FROM training_usulan_pegawai a LEFT JOIN master_pegawai b ON a.uid_pegawai=b.uid WHERE a.uid='$_POST[id]'");
 $rx=pg_fetch_array($q);
 ?>
 <form action="aksi-entry-sertifikat" method="POST" enctype="multipart/form-data">
@@ -12,34 +12,10 @@ $rx=pg_fetch_array($q);
 				<h5 class="modal-title" id="modal-standard-title">Tambah</h5>
 			</div>
 			<div class="modal-body" id="form-data">
-                <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Training</label>
-					<div class="col-md-9">
-						<select name="uid_sertifikat" class="form-control" required="">
-							<option value="">Pilih</option>
-							<?php
-							$q=pg_query($conn,"SELECT * FROM training_usulan");
-							while($r=pg_fetch_array($q)){
-								$select = $rx['uid_usulan'] == $r['uid'] ? 'selected' : '';
-								echo '<option value="'.$r['uid'].'" '.$select.'>Nomor '.$r['nomor_usulan'].' -- Tanggal '.date('d/m/Y',strtotime($r['tanggal_pelaksanaan'])).'</option>';
-							}
-							?>
-						</select>
-					</div>
-				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Pegawai</label>
+					<label class="form-control-label col-md-3 pt-2">Nama Pegawai</label>
 					<div class="col-md-9">
-						<select name="uid_pegawai" class="form-control" required="">
-							<option value="">Pilih</option>
-							<?php
-							$q=pg_query($conn,"SELECT * FROM master_pegawai WHERE uid_unit='$_SESSION[uid_unit]'");
-							while($r=pg_fetch_array($q)){
-								$selectx = $rx['uid_pegawai'] == $r['uid'] ? 'selected' : '';
-								echo '<option value="'.$r['uid'].'" '.$selectx.'>'.$r['nama'].'</option>';
-							}
-							?>
-						</select>
+						<input type="text"  class="form-control form-control-alternative" placeholder=""  value="<?php echo $rx['nama'];?>" readonly="readonly">
 					</div>
 				</div>
 				<div class="form-group focused row">

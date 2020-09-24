@@ -83,6 +83,20 @@
                             <?php
                                 }
                             ?>
+
+                            <?php
+                            if($status =="11"){
+                            ?>
+                            <a target="_blank" href="cetak-berkas-<?php echo str_replace("=", "", base64_encode($r['uid']));?>" rel="tooltip" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Print Berkas" >
+                                <i class="fa fa-print"></i>
+                            </a>
+
+                            <button type="button" rel="tooltip" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Upload Berkas" onclick="edit_data('<?php echo $r['uid'];?>','upload-berkas')">
+                                <i class="fa fa-upload"></i>
+                            </button>
+                            <?php
+                                }
+                            ?>
                             
                             <button type="button" rel="tooltip" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Terima?" onclick="approved_btn('<?php echo str_replace("=", "", base64_encode($r['uid']));?>','approved-<?php echo $ubah;?>')">
                                 <i class="fa fa-check"></i>

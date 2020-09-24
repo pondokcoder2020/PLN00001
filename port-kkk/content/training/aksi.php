@@ -23,10 +23,16 @@ else{
 		$tgl=date('Y-m-d',strtotime($_POST['tanggal_pelaksanaan']));
 		$uid_unit=$_SESSION['uid_unit'];
 		$uid_pegawai=$_SESSION['login_user'];
-		$berkas=upload_file('berkas','../../../document/');
 
-		$sql="INSERT INTO training_usulan (nomor_usulan,tanggal_pelaksanaan,uid_sertifikat,uid_unit,uid_pegawai,id_status_usulan,berkas) VALUES ('$_POST[nomor_usulan]','$tgl','$_POST[uid_sertifikat]','$uid_unit','$uid_pegawai','$_POST[status]','$berkas')";
+		$sql="INSERT INTO training_usulan (nomor_usulan,tanggal_pelaksanaan,uid_sertifikat,uid_unit,uid_pegawai,id_status_usulan) VALUES ('$_POST[nomor_usulan]','$tgl','$_POST[uid_sertifikat]','$uid_unit','$uid_pegawai','$_POST[status]') RETURNING uid";
 		$d=pg_fetch_array(pg_query($conn,$sql));
+
+		for ($i=0; $i < count($_POST['uid_pegawai']); $i++) { 
+			$pegawai=$_POST['uid_pegawai'][$i];
+			$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$d[uid]','$pegawai','$_POST[keterangan]')";
+			pg_fetch_array(pg_query($conn,$sql_pegawai));
+		}
+
 		header("location: training");
 	}
 

@@ -60,9 +60,7 @@ else{
     <link type="text/css" href="../assets/css/vendor-dropzone.rtl.css" rel="stylesheet">
 
     <!-- Select2 -->
-    <link type="text/css" href="../assets/css/vendor-select2.css" rel="stylesheet">
-    <link type="text/css" href="../assets/css/vendor-select2.rtl.css" rel="stylesheet">
-    <link type="text/css" href="../assets/vendor/select2/select2.min.css" rel="stylesheet">
+    <link type="text/css" href="../assets/vendor/dist_select2/css/select2.min.css" rel="stylesheet">
 
     <link type="text/css" href="../addons/styles.css" rel="stylesheet">
 
@@ -152,8 +150,8 @@ else{
     <script src="../assets/js/dropzone.js"></script>
 
     <!-- Select2 -->
-    <script src="../assets/vendor/select2/select2.min.js"></script>
-    <script src="../assets/js/select2.js"></script>
+    <script src="../assets/vendor/dist_select2/js/select2.min.js"></script>
+    <!-- <script src="../assets/js/select2.js"></script> -->
     
     <script src="../assets/vendor/masking/jquery.mask.js"></script>
 
@@ -171,7 +169,6 @@ else{
             $(this).siblings('.panel-heading').removeClass('active');
         });
 
-        $("#select2").select2();
         $("#example1").dataTable();
         $("#example2").dataTable();
         $("#example3").dataTable();

@@ -1,4 +1,10 @@
-<form action="aksi-tambah-identitas" method="POST" enctype="multipart/form-data">
+<?php
+$r=pg_fetch_array(pg_query($conn,"SELECT * FROM training_usulan WHERE uid='$_POST[id]'"));
+?>
+<form action="aksi-upload-berkas" method="POST" enctype="multipart/form-data">
+	
+	<input type="hidden" name="uid" value="<?php echo $r['uid']?>">
+
 	<div class="modal-dialog modal-lg a-lightSpeed">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -6,54 +12,9 @@
 			</div>
 			<div class="modal-body" id="form-data">
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Unit</label>
+					<label class="form-control-label col-md-3 pt-2">Berkas</label>
 					<div class="col-md-9">
-						<select class="form-control form-control-alternative" name="unit" required="">
-							<option value="">Pilih</option>
-							<?php
-							$q=pg_query($conn,"SELECT * FROM master_unit");
-							while($r=pg_fetch_array($q)){
-								echo '<option value="'.$r['uid'].'">'.$r['nama'].'</option>';
-							}
-							?>
-						</select>
-					</div>
-				</div>
-                <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Nama Alat</label>
-					<div class="col-md-9">
-						<input type="hidden"  class="form-control form-control-alternative" placeholder="" name="id_subkategori" value="<?php echo $_GET['id'];?>">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" autofocus>
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Merk</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="merk">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Kapasitas</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="kapasitas">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Jumlah</label>
-					<div class="col-md-9">
-						<input type="number"  class="form-control form-control-alternative" placeholder="" name="jumlah">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Satuan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="satuan">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Keterangan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="keterangan">
+						<input type="file"  class="form-control form-control-alternative" placeholder="" name="berkas">
 					</div>
 				</div>
 			</div>
