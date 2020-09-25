@@ -41,9 +41,8 @@
 					<label class="form-control-label col-md-3 pt-2">Pegawai</label>
 					<div class="col-md-9">
 						<select name="uid_pegawai[]" class="form-control select2" required="" multiple="multiple" style="width: 100%;">
-							<option value="">Pilih</option>
 							<?php
-							$q=pg_query($conn,"SELECT * FROM master_pegawai WHERE uid_unit='$_SESSION[uid_unit]'");
+							$q=pg_query($conn,"SELECT a.* FROM master_pegawai a INNER JOIN master_jabatan b ON a.uid_jabatan=b.uid  WHERE a.uid_unit='$_SESSION[uid_unit]'");
 							while($r=pg_fetch_array($q)){
 								echo '<option value="'.$r['uid'].'">'.$r['nama'].'</option>';
 							}
