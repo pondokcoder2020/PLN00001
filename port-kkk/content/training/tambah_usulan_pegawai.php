@@ -40,7 +40,7 @@
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Pegawai</label>
 					<div class="col-md-9">
-						<select name="uid_pegawai[]" class="form-control select2" required="" multiple="multiple" style="width: 100%;">
+						<select name="uid_pegawai[]" class="form-control select2"  multiple="multiple" style="width: 100%;">
 							<?php
 							$q=pg_query($conn,"SELECT a.* FROM master_pegawai a INNER JOIN master_jabatan b ON a.uid_jabatan=b.uid  WHERE a.uid_unit='$_SESSION[uid_unit]'");
 							while($r=pg_fetch_array($q)){

@@ -17,7 +17,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT * FROM master_aset_subkategori_varian WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
+                $tampil=pg_query($conn,"SELECT * FROM master_aset_subkategori_varian WHERE id_subkategori='$_GET[id]' AND deleted_at IS NULL ORDER BY nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>

@@ -25,7 +25,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.*,b.nama as varian,c.nama as kapasitas FROM aset a LEFT JOIN master_aset_subkategori_varian b ON a.id_varian=b.id LEFT JOIN kapasitas c ON a.kapasitas=c.id WHERE a.id_subkategori='$_GET[id]' ORDER BY a.nama ASC");
+                $tampil=pg_query($conn,"SELECT a.*,b.nama as varian,c.nama as kapasitas FROM aset a LEFT JOIN master_aset_subkategori_varian b ON a.id_varian=b.id LEFT JOIN kapasitas c ON a.kapasitas=c.id WHERE  a.id_subkategori='$_GET[id]' AND  a.deleted_at IS NULL ORDER BY a.nama  ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>

@@ -67,7 +67,7 @@ else{
 
 	elseif ($act=='inputusulanpegawai'){
 
-		$sql="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$_POST[uid_usulan]','$_POST[uid_pegawai]','$_POST[keterangan]')";
+		$sql="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan, created_at) VALUES ('$_POST[uid_usulan]','$_POST[uid_pegawai]','$_POST[keterangan]')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		header("location: training#tab-22");
 	}
@@ -87,7 +87,7 @@ else{
 
 	elseif ($act=='deleteusulanpegawai'){
 
-		$sql="DELETE FROM training_usulan_pegawai WHERE uid='$_GET[uid]'";
+		$sql="DELETE FROM training_usulan_pegawai deleted_at='$waktu_sekarang' WHERE uid='$_GET[uid]'";
 		
 		$result=pg_query($conn,$sql);
 		
@@ -104,7 +104,7 @@ else{
 		
 		$result=pg_query($conn,$status_training);
 
-		$sql="INSERT INTO pegawai_sertifikat (uid_pegawai,uid_sertifikat,nomor,keterangan) VALUES ('$_POST[uid_pegawai]','$_POST[uid_sertifikat]','$_POST[nomor]','$_POST[keterangan]')";
+		$sql="INSERT INTO pegawai_sertifikat (uid_pegawai,uid_sertifikat,nomor,keterangan,created_at) VALUES ('$_POST[uid_pegawai]','$_POST[uid_sertifikat]','$_POST[nomor]','$_POST[keterangan]')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		
 		header("location: training#tab-22");

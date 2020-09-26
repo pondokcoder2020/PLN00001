@@ -30,6 +30,7 @@
                         <td><?php echo $r['sertifikat'];?></td>
                         <td><?php echo $r['pegawai'];?></td>
                         <td><?php echo $r['keterangan'];?></td>
+                        <td><?php echo $r['berkas'];?></td>
                         <td><?php echo $r['status'];?></td>
                         <td>
                             <?php if($r['berkas'] !=""){

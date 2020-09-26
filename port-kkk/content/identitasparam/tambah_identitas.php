@@ -68,7 +68,7 @@
 						<select class="form-control" name="id_varian">
 							<option value="">Pilih</option>
 							<?php 
-								$q=pg_query($conn,"SELECT * FROM varian WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
+								$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_varian WHERE id_subkategori='$_GET[id]' ORDER BY nama ASC");
 								while($r=pg_fetch_array($q)){
 									echo '<option value="'.$r['id'].'">'.$r['nama'].'</option>';
 								}
