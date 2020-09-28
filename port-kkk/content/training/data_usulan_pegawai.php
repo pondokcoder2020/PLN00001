@@ -5,7 +5,7 @@
 <br>
 <div class="card-body">
     <div class="table-responsive">
-        <table id="example1" class="table table-bordered table-striped table-hover" style="width:100%" >
+        <table class="table table-bordered table-striped table-hover" style="width:100%" >
             <thead> 
                 <tr>
                     <th width="50px">No.</th>
@@ -21,7 +21,7 @@
             <tbody>
                 <?php
                 $no=1;
-                $tampil=pg_query($conn,"SELECT a.*,b.nomor_usulan,b.id_status_usulan,b.berkas,c.nama as pegawai,d.nama as sertifikat,e.nama as status FROM training_usulan_pegawai a LEFT JOIN training_usulan b ON a.uid_usulan=b.uid LEFT JOIN master_pegawai c ON a.uid_pegawai=c.uid LEFT JOIN master_sertifikat d ON b.uid_sertifikat=d.uid_sertifikat LEFT JOIN status_usulan e ON b.id_status_usulan=e.id WHERE selesai_training IS NULL ORDER BY d.nama ASC");
+                $tampil=pg_query($conn,"SELECT a.*,b.nomor_usulan,b.id_status_usulan,b.berkas,c.nama as pegawai,d.nama as sertifikat,e.nama as status FROM training_usulan_pegawai a LEFT JOIN training_usulan b ON a.uid_usulan=b.uid LEFT JOIN master_pegawai c ON a.uid_pegawai=c.uid LEFT JOIN master_sertifikat d ON b.uid_sertifikat=d.uid_sertifikat LEFT JOIN status_usulan e ON b.id_status_usulan=e.id WHERE selesai_training IS NULL AND a.deleted_at IS NULL ORDER BY d.nama ASC");
                 while($r=pg_fetch_array($tampil)){
                     ?>
                     <tr>
@@ -30,14 +30,13 @@
                         <td><?php echo $r['sertifikat'];?></td>
                         <td><?php echo $r['pegawai'];?></td>
                         <td><?php echo $r['keterangan'];?></td>
-                        <td><?php echo $r['berkas'];?></td>
-                        <td><?php echo $r['status'];?></td>
                         <td>
                             <?php if($r['berkas'] !=""){
                             ?>
                             <a download="../document/<?php echo $r['berkas'];?>" href="../document/<?php echo $r['berkas'];?>">Download</a>
                             <?php } ?>
                         </td>
+                        <td><?php echo $r['status'];?></td>
                         <td>
                             <?php
                             if($r['id_status_usulan']=="13"){
@@ -48,6 +47,10 @@
 
                             <?php } ?>
 
+                            <?php
+                            if($r['id_status_usulan']=="1" OR $r['id_status_usulan']=="3" OR $r['id_status_usulan']=="5" OR $r['id_status_usulan']=="9"){
+                            ?>
+
                             <button onclick="edit_data('<?php echo $r['uid']?>','edit-usulan-pegawai')" class="btn btn-sm btn-warning" data-placement="top" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </button>
@@ -55,6 +58,7 @@
                             <button type="button" class="btn btn-sm btn-danger" data-placement="top" title="Hapus" onclick="hapus_data('<?php echo $r['uid']?>','aksi-hapus-usulan-pegawai')">
                                 <i class="fa fa-trash"></i>
                             </button>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php

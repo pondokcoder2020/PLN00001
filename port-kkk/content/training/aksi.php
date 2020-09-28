@@ -42,12 +42,19 @@ else{
 
 	elseif ($act=='updatetraining'){
 		$tgl=date('Y-m-d',strtotime($_POST['tanggal_pelaksanaan']));
-		$berkas_baru =upload_file('berkas','../../../document/');
-		$berkas = $berkas_baru == "" ? $_POST['berkas_lama'] : $berkas_baru;
+		$uid_unit=$_SESSION['uid_unit'];
+		$uid_pegawai=$_SESSION['login_user'];
 
-		$sql="UPDATE training_usulan SET nomor_usulan='$_POST[nomor_usulan]',tanggal_pelaksanaan='$_POST[tanggal_pelaksanaan]',uid_sertifikat='$_POST[uid_sertifikat]',id_status_usulan='$_POST[status]',berkas='$berkas' WHERE uid='$_POST[uid]'";
+		$sql="UPDATE training_usulan SET nomor_usulan='$_POST[nomor_usulan]',tanggal_pelaksanaan='$tgl',uid_sertifikat='$_POST[uid_sertifikat]',id_status_usulan='$_POST[status]' WHERE uid='$_POST[uid]'";
 		
-		$result=pg_query($conn,$sql);
+		pg_query($conn,$sql);
+		if($x=pg_query($conn,"DELETE FROM training_usulan_pegawai WHERE uid_usulan='$_POST[uid]'")){
+			for ($i=0; $i < count($_POST['uid_pegawai']); $i++) { 
+				$pegawai=$_POST['uid_pegawai'][$i];
+				$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$_POST[uid]','$pegawai','$_POST[keterangan]')";
+				pg_fetch_array(pg_query($conn,$sql_pegawai));
+			}
+		}
 
 		header("location: training");
 	}
@@ -87,7 +94,7 @@ else{
 
 	elseif ($act=='deleteusulanpegawai'){
 
-		$sql="DELETE FROM training_usulan_pegawai deleted_at='$waktu_sekarang' WHERE uid='$_GET[uid]'";
+		$sql="UPDATE training_usulan_pegawai SET deleted_at='$waktu_sekarang' WHERE uid='$_GET[uid]'";
 		
 		$result=pg_query($conn,$sql);
 		

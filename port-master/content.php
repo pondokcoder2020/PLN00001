@@ -61,4 +61,8 @@ else if($module=='unitlayanan'){
 else if($module=='identitasparam'){
     include "content/identitasparam/data.php";
 }
+
+else if($module=='sertifikat'){
+    include "content/sertifikat/data.php";
+}
 ?>

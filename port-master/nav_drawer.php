@@ -115,6 +115,12 @@ $module=$_GET['module'];
                     <span class="sidebar-menu-text">Unit Sektor</span>
                 </a>
             </li>
+            <li class="sidebar-menu-item <?php if($module=='sertifikat'){echo "active";}?>">
+                <a class="sidebar-menu-button" href="sertifikat">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons fa fa-file"></i>
+                    <span class="sidebar-menu-text">Sertifikat</span>
+                </a>
+            </li>
             <?php
             }
             else if($_SESSION['id_level']=='2'){

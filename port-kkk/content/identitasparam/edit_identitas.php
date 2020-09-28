@@ -1,5 +1,5 @@
 <?php
-$q=pg_query($conn,"SELECT * FROM aset WHERE id='$_POST[id]'");
+$q=pg_query($conn,"SELECT * FROM aset WHERE uid='$_POST[id]'");
 $r=pg_fetch_array($q);
 ?>
 <form action="aksi-edit-identitas" method="POST" enctype="multipart/form-data">
@@ -10,11 +10,11 @@ $r=pg_fetch_array($q);
 			</div>
 			<div class="modal-body" id="form-data">
                 <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Nama Alat</label>
+					<label class="form-control-label col-md-3 pt-2">Nama Perusahaan</label>
 					<div class="col-md-9">
-						<input type="hidden"  class="form-control form-control-alternative" placeholder="" name="id" value="<?php echo $_POST['id'];?>">
 						<input type="hidden"  class="form-control form-control-alternative" placeholder="" name="id_subkategori" value="<?php echo $r['id_subkategori'];?>">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" autofocus value="<?php echo $r['nama'];?>">
+						<input type="hidden"  class="form-control form-control-alternative" placeholder="" name="uid" value="<?php echo $r['uid'];?>">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama_perusahaan" autofocus value="<?php echo $r['nama_perusahaan'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
@@ -24,20 +24,26 @@ $r=pg_fetch_array($q);
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Merk</label>
+					<label class="form-control-label col-md-3 pt-2">Nomor</label>
 					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="merk" value="<?php echo $r['merk'];?>">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nomor" value="<?php echo $r['nomor'];?>">
+					</div>
+				</div>
+				<div class="form-group focused row">
+					<label class="form-control-label col-md-3 pt-2">Nama Lokasi</label>
+					<div class="col-md-9">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama_lokasi" value="<?php echo $r['nama_lokasi'];?>">
 					</div>
 				</div>
 				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Kapasitas</label>
 					<div class="col-md-9">
-						<select class="form-control" name="kapasitas">
+						<select class="form-control" name="id_kapasitas" required="">
 							<option value="">Pilih</option>
 							<?php 
-								$qc=pg_query($conn,"SELECT * FROM kapasitas WHERE id_subkategori='$_GET[id_sub]' ORDER BY nama ASC");
-								while($rx=pg_fetch_array($qc)){
-									$select = $r['kapasitas'] == $rx['id'] ? 'selected' : '';
+								$q=pg_query($conn,"SELECT * FROM kapasitas WHERE id_subkategori='$r[id_subkategori]' ORDER BY nama ASC");
+								while($rx=pg_fetch_array($q)){
+									$select = $r['id_kapasitas'] == $rx['id'] ? 'selected' : '';
 									echo '<option value="'.$rx['id'].'" '.$select.'>'.$rx['nama'].'</option>';
 								}
 							?>
@@ -57,36 +63,18 @@ $r=pg_fetch_array($q);
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Tanggal Beli</label>
-					<div class="col-md-9">
-						<input type="date"  class="form-control form-control-alternative" placeholder="" name="tanggal_beli" value="<?php echo date('Y-m-d',strtotime($r['lokasi_penempatan']));?>">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Lokasi Penempatan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="lokasi_penempatan" value="<?php echo $r['lokasi_penempatan'];?>">
-					</div>
-				</div>
-				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Jenis/Varian</label>
 					<div class="col-md-9">
-						<select class="form-control" name="id_varian">
+						<select class="form-control" name="id_varian" required="">
 							<option value="">Pilih</option>
 							<?php 
-								$qu=pg_query($conn,"SELECT * FROM master_aset_subkategori_varian WHERE id_subkategori='$_GET[id_sub]' ORDER BY nama ASC");
-								while($rx=pg_fetch_array($qu)){
-									$select = $rx['id'] == $r['id_varian'] ? 'selected' : '';
- 									echo '<option value="'.$rx['id'].'" '.$select.'>'.$rx['nama'].'</option>';
+								$q=pg_query($conn,"SELECT * FROM master_aset_subkategori_varian WHERE id_subkategori='$r[id_subkategori]' ORDER BY nama ASC");
+								while($ry=pg_fetch_array($q)){
+									$select = $r['id_varian'] == $rx['id'] ? 'selected' : '';
+									echo '<option value="'.$ry['id'].'" '.$select.'>'.$ry['nama'].'</option>';
 								}
 							?>
 						</select>
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Keterangan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="keterangan" value="<?php echo $r['keterangan'];?>">
 					</div>
 				</div>
 			</div>

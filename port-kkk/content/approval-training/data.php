@@ -36,6 +36,7 @@
                 
                 $ubah="";
                 $tolak="";
+                $status="";
                 if($pegawai['uid_jabatan']=='5f861064-3019-82b6-edc7-97be309a02d0'){
                     $status='3';
                     $ubah='7';
@@ -49,9 +50,6 @@
                 if($pegawai['uid_jabatan']=='ac99005c-ac71-4c0c-a4d1-50862b4a433b'){
                     $status='11';
                     $ubah='13';
-                }
-                else{
-                    $status="3";
                 }
 
                 $no=1;

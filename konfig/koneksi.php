@@ -2,9 +2,9 @@
  
  $host = "localhost";
  $port = "5432";
- $dbname = "pln";
+ $dbname = "pln001";
  $user = "postgres";
- $password = "Pinok";
+ $password = "root";
  $pg_options = "--client_encoding=UTF8";
  
  $connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password} options='{$pg_options}'";

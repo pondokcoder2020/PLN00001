@@ -134,6 +134,14 @@ RewriteRule ^edit-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act
 RewriteRule ^aksi-edit-kapasitas$ content/identitasparam/aksi.php?act=updatekapasitas [QSA,L]
 RewriteRule ^aksi-hapus-kapasitas-([0-9a-zA-Z-]+)$ content/identitasparam/aksi.php?act=deletekapasitas&id=$1& [QSA,L]
 
+## sertifikat
+RewriteRule ^sertifikat$ media.php?module=sertifikat [QSA,L]
+RewriteRule ^tambah-sertifikat$ content/sertifikat/aksi.php?act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-sertifikat$ content/sertifikat/aksi.php?act=input [QSA,L]
+RewriteRule ^edit-sertifikat$ content/sertifikat/aksi.php?act=edit [QSA,L]
+RewriteRule ^aksi-edit-sertifikat$ content/sertifikat/aksi.php?act=update [QSA,L]
+RewriteRule ^aksi-hapus-sertifikat-([0-9a-zA-Z-]+)$ content/sertifikat/aksi.php?act=delete&id=$1 [QSA,L]
+
 ## View identitas param
 RewriteRule ^view-identitasparam-([0-9a-zA-Z-]+)$ media.php?module=identitasparam&act=view&id=$1 [QSA,L]
 

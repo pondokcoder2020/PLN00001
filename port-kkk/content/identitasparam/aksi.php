@@ -33,8 +33,7 @@ else{
 	
 	elseif($act=='inputidentitas'){
 
-		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="INSERT INTO aset (unit,nama,kode,merk,kapasitas,jumlah,satuan,keterangan,id_subkategori,tanggal_beli,lokasi_penempatan,id_varian,created_at) VALUES ('$rx[uid_unit]','$_POST[nama]','$_POST[kode]','$_POST[merk]','$_POST[kapasitas]','$_POST[jumlah]','$_POST[satuan]','$_POST[keterangan]','$_POST[id_subkategori]','$tgl','$_POST[lokasi_penempatan]','$_POST[id_varian]','$waktu_sekarang')";
+		$sql="INSERT INTO aset (uid_unit,nama_perusahaan,kode,nama_lokasi,id_kapasitas,jumlah,satuan,id_subkategori,id_varian,created_at,nomor) VALUES ('$rx[uid_unit]','$_POST[nama]','$_POST[kode]','$_POST[merk]','$_POST[kapasitas]','$_POST[jumlah]','$_POST[satuan]','$_POST[id_subkategori]','$_POST[id_varian]','$waktu_sekarang','$_POST[nomor]')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		header("location: view-identitasparam-".$_POST['id_subkategori']);
 	}
@@ -49,14 +48,13 @@ else{
 	
 	elseif ($act=='updateidentitas'){
 
-		$tgl=date('Y-m-d',strtotime($_POST['tanggal_beli']));
-		$sql="UPDATE aset SET nama='$_POST[nama]',merk='$_POST[merk]',kapasitas='$_POST[kapasitas]',jumlah='$_POST[jumlah]',satuan='$_POST[satuan]',keterangan='$_POST[keterangan]',tanggal_beli='$tgl',lokasi_penempatan='$_POST[lokasi_penempatan]',id_varian='$_POST[id_varian]',kode='$_POST[kode]', updated_at='$waktu_sekarang' WHERE id='$_POST[id]'";
+		$sql="UPDATE aset SET nama_perusahaan='$_POST[nama_perusahaan]',nama_lokasi='$_POST[nama_lokasi]',id_kapasitas='$_POST[id_kapasitas]',jumlah='$_POST[jumlah]',satuan='$_POST[satuan]',id_varian='$_POST[id_varian]',kode='$_POST[kode]', updated_at='$waktu_sekarang',nomor='$_POST[nomor]' WHERE uid='$_POST[uid]'";
 		
 		$result=pg_query($conn,$sql);
 
-		// print_r($sql);die();
+		print_r($sql);die();
 
-		header("location: view-identitasparam-".$_POST['id_subkategori']);
+		// header("location: view-identitasparam-".$_POST['id_subkategori']);
 	}
 
 	elseif ($act=='updateparameter'){
@@ -68,10 +66,10 @@ else{
 	}
 	
 	elseif($act=='deleteidentitas'){
-		$q=pg_query($conn,"SELECT * FROM aset  WHERE id='$_GET[id]'");
+		$q=pg_query($conn,"SELECT * FROM aset  WHERE uid='$_GET[id]'");
 		$r=pg_fetch_array($q);
 
-		$sql="UPDATE  aset SET deleted_at='$waktu_sekarang' WHERE id='$_GET[id]'";
+		$sql="UPDATE  aset SET deleted_at='$waktu_sekarang' WHERE uid='$_GET[id]'";
 		$result=pg_query($conn,$sql);
 
 		header("location: view-identitasparam-".$r['id_subkategori']);

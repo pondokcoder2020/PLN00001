@@ -6,7 +6,7 @@
 			</div>
 			<div class="modal-body" id="form-data">
                 <div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Nama Alat</label>
+					<label class="form-control-label col-md-3 pt-2">Nama Perusahaan</label>
 					<div class="col-md-9">
 						<input type="hidden"  class="form-control form-control-alternative" placeholder="" name="id_subkategori" value="<?php echo $_GET['id'];?>">
 						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nama" autofocus>
@@ -19,7 +19,13 @@
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Merk</label>
+					<label class="form-control-label col-md-3 pt-2">Nomor</label>
+					<div class="col-md-9">
+						<input type="text"  class="form-control form-control-alternative" placeholder="" name="nomor">
+					</div>
+				</div>
+				<div class="form-group focused row">
+					<label class="form-control-label col-md-3 pt-2">Nama Lokasi</label>
 					<div class="col-md-9">
 						<input type="text"  class="form-control form-control-alternative" placeholder="" name="merk">
 					</div>
@@ -51,18 +57,6 @@
 					</div>
 				</div>
 				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Tanggal Beli</label>
-					<div class="col-md-9">
-						<input type="date"  class="form-control form-control-alternative" placeholder="" name="tanggal_beli">
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Lokasi Penempatan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="lokasi_penempatan">
-					</div>
-				</div>
-				<div class="form-group focused row">
 					<label class="form-control-label col-md-3 pt-2">Jenis/Varian</label>
 					<div class="col-md-9">
 						<select class="form-control" name="id_varian">
@@ -74,12 +68,6 @@
 								}
 							?>
 						</select>
-					</div>
-				</div>
-				<div class="form-group focused row">
-					<label class="form-control-label col-md-3 pt-2">Keterangan</label>
-					<div class="col-md-9">
-						<input type="text"  class="form-control form-control-alternative" placeholder="" name="keterangan">
 					</div>
 				</div>
 			</div>
