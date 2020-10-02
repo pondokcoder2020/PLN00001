@@ -24,12 +24,12 @@ else{
 		$uid_unit=$_SESSION['uid_unit'];
 		$uid_pegawai=$_SESSION['login_user'];
 
-		$sql="INSERT INTO training_usulan (nomor_usulan,tanggal_pelaksanaan,uid_sertifikat,uid_unit,uid_pegawai,id_status_usulan) VALUES ('$_POST[nomor_usulan]','$tgl','$_POST[uid_sertifikat]','$uid_unit','$uid_pegawai','$_POST[status]') RETURNING uid";
+		$sql="INSERT INTO training_usulan (nomor_usulan,tanggal_pelaksanaan,uid_sertifikat,uid_unit,uid_pegawai,id_status_usulan,created_at) VALUES ('$_POST[nomor_usulan]','$tgl','$_POST[uid_sertifikat]','$uid_unit','$uid_pegawai','$_POST[status]','$waktu_sekarang')RETURNING uid";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 
 		for ($i=0; $i < count($_POST['uid_pegawai']); $i++) { 
 			$pegawai=$_POST['uid_pegawai'][$i];
-			$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$d[uid]','$pegawai','$_POST[keterangan]')";
+			$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan,created_at) VALUES ('$d[uid]','$pegawai','$_POST[keterangan]','$waktu_sekarang')";
 			pg_fetch_array(pg_query($conn,$sql_pegawai));
 		}
 
@@ -45,13 +45,13 @@ else{
 		$uid_unit=$_SESSION['uid_unit'];
 		$uid_pegawai=$_SESSION['login_user'];
 
-		$sql="UPDATE training_usulan SET nomor_usulan='$_POST[nomor_usulan]',tanggal_pelaksanaan='$tgl',uid_sertifikat='$_POST[uid_sertifikat]',id_status_usulan='$_POST[status]' WHERE uid='$_POST[uid]'";
+		$sql="UPDATE training_usulan SET nomor_usulan='$_POST[nomor_usulan]',tanggal_pelaksanaan='$tgl',uid_sertifikat='$_POST[uid_sertifikat]',id_status_usulan='$_POST[status]', updated_at='$waktu_sekarang'WHERE uid='$_POST[uid]'";
 		
 		pg_query($conn,$sql);
-		if($x=pg_query($conn,"DELETE FROM training_usulan_pegawai WHERE uid_usulan='$_POST[uid]'")){
+		if($x=pg_query($conn,"UPDATE  training_usulan_pegawai SET deleted_at='$waktu_sekarang' WHERE uid_usulan='$_POST[uid]'")){
 			for ($i=0; $i < count($_POST['uid_pegawai']); $i++) { 
 				$pegawai=$_POST['uid_pegawai'][$i];
-				$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan) VALUES ('$_POST[uid]','$pegawai','$_POST[keterangan]')";
+				$sql_pegawai="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan,created_at) VALUES ('$_POST[uid]','$pegawai','$_POST[keterangan]','$waktu_sekarang')";
 				pg_fetch_array(pg_query($conn,$sql_pegawai));
 			}
 		}
@@ -61,7 +61,7 @@ else{
 
 	elseif ($act=='deletetraining'){
 
-		$sql="DELETE FROM training_usulan WHERE uid='$_GET[uid]'";
+		$sql="UPDATE  training_usulan SET deleted_at='$waktu_sekarang' WHERE uid='$_GET[uid]'";
 		
 		$result=pg_query($conn,$sql);
 		
@@ -74,7 +74,7 @@ else{
 
 	elseif ($act=='inputusulanpegawai'){
 
-		$sql="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan, created_at) VALUES ('$_POST[uid_usulan]','$_POST[uid_pegawai]','$_POST[keterangan]')";
+		$sql="INSERT INTO training_usulan_pegawai (uid_usulan,uid_pegawai,keterangan, created_at) VALUES ('$_POST[uid_usulan]','$_POST[uid_pegawai]','$_POST[keterangan]','$waktu_sekarang')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		header("location: training#tab-22");
 	}
@@ -85,7 +85,7 @@ else{
 
 	elseif ($act=='updateusulanpegawai'){
 
-		$sql="UPDATE training_usulan_pegawai SET uid_usulan='$_POST[uid_usulan]',uid_pegawai='$_POST[uid_pegawai]',keterangan='$_POST[keterangan]' WHERE uid='$_POST[uid]'";
+		$sql="UPDATE training_usulan_pegawai SET uid_usulan='$_POST[uid_usulan]',uid_pegawai='$_POST[uid_pegawai]',keterangan='$_POST[keterangan]', updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
 		
 		$result=pg_query($conn,$sql);
 		
@@ -107,11 +107,11 @@ else{
 
 	elseif ($act=='inputsertifikat'){
 
-		$status_training="UPDATE training_usulan_pegawai SET selesai_training='selesai' WHERE uid='$_POST[uid]'";
+		$status_training="UPDATE training_usulan_pegawai SET selesai_training='selesai', updated_at='$waktu_sekarang' WHERE uid='$_POST[uid]'";
 		
 		$result=pg_query($conn,$status_training);
 
-		$sql="INSERT INTO pegawai_sertifikat (uid_pegawai,uid_sertifikat,nomor,keterangan,created_at) VALUES ('$_POST[uid_pegawai]','$_POST[uid_sertifikat]','$_POST[nomor]','$_POST[keterangan]')";
+		$sql="INSERT INTO pegawai_sertifikat (uid_pegawai,uid_sertifikat,nomor,keterangan,created_at) VALUES ('$_POST[uid_pegawai]','$_POST[uid_sertifikat]','$_POST[nomor]','$_POST[keterangan]','$waktu_sekarang')";
 		$d=pg_fetch_array(pg_query($conn,$sql));
 		
 		header("location: training#tab-22");

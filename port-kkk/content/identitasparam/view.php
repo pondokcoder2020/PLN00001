@@ -41,19 +41,19 @@ $d=pg_fetch_array(pg_query($conn,"SELECT * FROM master_aset_subkategori WHERE id
 
 <script type="text/javascript">
 $(function () {
-	$('#myTab a').click(function(e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
+    $('#myTab a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 
-	// store the currently selected tab in the hash value
-	$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
-		var id = $(e.target).attr("href").substr(1);
-		window.location.hash = id;
-	});
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
 
-	// on load of the page: switch to the currently selected tab
-	var hash = window.location.hash;
-	$('#myTab a[href="' + hash + '"]').tab('show');
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    $('#myTab a[href="' + hash + '"]').tab('show');
 });
 </script>
